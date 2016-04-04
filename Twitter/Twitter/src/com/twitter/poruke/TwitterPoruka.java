@@ -30,36 +30,34 @@ public class TwitterPoruka {
 	 * @param korisnik
 	 */
 	public void setKorisnik(String korisnik) { 
-		if (korisnik==null || korisnik == "") 
-			throw new RuntimeException(
-					"Ime korisnika mora biti uneto"); 
+		if (korisnik == null || korisnik == "") 
+			throw new RuntimeException("Ime korisnika mora biti uneto"); 
 		this.korisnik = korisnik; 
 	} 
-	
+
 	/**
 	 * 
 	 * @return Ispisanu poruku.
 	 */
 	public String getPoruka() { 
-		return "poruka"; 
+		return poruka; 
 	} 
-	
+
 	/**
 	 * Ova metoda daje atributu 'poruka' vrednost zadatog parametra.
 	 * @param poruka
 	 */
 	public void setPoruka(String poruka) { 
-		if (poruka==null || this.poruka.length()>140) 
-			throw new RuntimeException(
-					"Poruka mora biti uneta i mora imati najvise 140 znakova");
+		if (poruka == null || poruka.length()>140) 
+			throw new RuntimeException("Poruka mora biti uneta i mora imati najvise 140 znakova");
 		this.poruka = poruka; 
 	} 
-	
+
 	/**
 	 * @return Ime (i prezime) korisnika i njegovu poruku.
 	 */
 	public String toString(){ 
 		return "KORISNIK:"+korisnik+" PORUKA:"+poruka; 
 	}
-	
+
 }
