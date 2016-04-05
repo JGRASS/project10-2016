@@ -40,15 +40,6 @@ public class TwitterPorukaTest {
 		assertEquals("Pera", tp.getKorisnik());
 	}
 
-	@Test
-	public void getPoruka() throws Exception {  
-		if(tp.getPoruka().equalsIgnoreCase("poruka")){
-			throw new RuntimeException("Metoda uvek vraca rec 'poruka'! ");
-		}
-		else return;
-		
-	} 
-
 	
 	@Test (expected = java.lang.RuntimeException.class)
 	public void testSetPoruka() {

@@ -25,9 +25,12 @@ public class Twitter {
 	 * @param poruka
 	 */
 	public void unesi(String korisnik, String poruka) {
-
+		
+		if(korisnik.isEmpty() || korisnik == null || poruka.length() > 140 || poruka == null)
+			throw new RuntimeException("Nesto nije u redu");
+		
 		TwitterPoruka tp = new TwitterPoruka();
-		tp.setKorisnik("korisnik");
+		tp.setKorisnik(korisnik);
 		tp.setPoruka(poruka);
 
 		poruke.addLast(tp);
@@ -40,22 +43,27 @@ public class Twitter {
 	 * @return Niz poruka koje sadrze uneti tag.
 	 */
 	public TwitterPoruka[] vratiPoruke(int maxBroj, String tag) {
+		
+		
 		if (tag == null || tag == "")
 			throw new RuntimeException("Morate uneti tag");
 
+		
 		if (maxBroj <= 0) maxBroj = 100;
 
 		int brojac = 0;
 
 		TwitterPoruka[] rezultat = new TwitterPoruka[maxBroj];
 
-		for (int i = 0; i < poruke.size(); i++)
-			if (poruke.get(i).getPoruka().indexOf(tag) != -1)
-				if (brojac < maxBroj) {
-					rezultat[brojac + 1] = poruke.get(i);
-					brojac++;
-				} else
-					break;
+		for (int i = 0; i < poruke.size(); i++){
+			if (poruke.get(i).getPoruka().indexOf(tag) != -1);
+			
+			if (brojac < maxBroj) {
+				rezultat[brojac] = poruke.get(i);
+				brojac++;
+			} else	break;
+			
+		}
 		return rezultat;
 	}
 }
