@@ -1,4 +1,4 @@
-package test;
+package twitterTest;
 
 import static org.junit.Assert.*;
 
@@ -43,7 +43,15 @@ public class TwitterTest {
 	@Test
 	public void testVratiSvePoruke() {
 		
-		tw.vratiSvePoruke();
+		TwitterPoruka porukica = new TwitterPoruka();
+		
+		porukica.setKorisnik("Neko");
+		porukica.setPoruka("Nesto");
+		
+		tw.unesi("Neko", "Nesto");
+		
+		assertEquals(porukica.getKorisnik(), tw.vratiSvePoruke().get(0).getKorisnik());
+		assertEquals(porukica.getPoruka(), tw.vratiSvePoruke().get(0).getPoruka());
 		
 	}
 	
@@ -58,7 +66,25 @@ public class TwitterTest {
 		
 		String korisnik = "Kobe Bryant";
 		
+		TwitterPoruka porukica = new TwitterPoruka();
+		porukica.setKorisnik(korisnik);
+		porukica.setPoruka(neverovatnoVelikaPoruka);
+		
 		tw.unesi(korisnik, neverovatnoVelikaPoruka);
+		
+		assertEquals(porukica.toString(), tw.vratiSvePoruke().getLast().toString());
+	}
+	
+	@Test(expected = java.lang.RuntimeException.class)
+	public void testUnesiNullove(){
+		
+		tw.unesi(null, null);
+	}
+	
+	@Test(expected = java.lang.RuntimeException.class)
+	public void testUnesiPrazneStringove() {
+		
+		tw.unesi("", "");
 	}
 	
 	@Test
@@ -79,8 +105,7 @@ public class TwitterTest {
 	}
 
 	@Test 
-	public void testVratiPorukeManjeOdNule()
-	{
+	public void testVratiPorukeManjeOdNule(){
 		String korisnik = "Pera";
 		String poruka = "Ima li kraja";
 		
@@ -105,15 +130,6 @@ public class TwitterTest {
 		
 		tw.vratiPoruke(5, tag);
 	}
-	
-	@Test
-	public void testVratiPoruke() {
-		
-		String tag = "au";
-		
-		tw.vratiPoruke(15, tag);
-	}
-	
 	
 
 }

@@ -4,6 +4,11 @@ import java.util.LinkedList;
 
 import com.twitter.poruke.TwitterPoruka;
 
+/**
+ * Klasa Twitter koja ima listu poruka i metode koje manipulisu tim porukama.
+ * @author Luka
+ *
+ */
 public class Twitter {
 
 	/**
@@ -21,6 +26,7 @@ public class Twitter {
 
 	/**
 	 * Metoda unosi novog korisnika i njegovu poruku na kraj liste.
+	 * @throws RuntimeException
 	 * @param korisnik
 	 * @param poruka
 	 */
@@ -38,6 +44,7 @@ public class Twitter {
 
 	/**
 	 * Metoda pronalazi barem jednu (ako postoji) poruku u kojoj se nalazi uneti tag i vraca je/ih u obliku niza.
+	 * @throws RuntimeException
 	 * @param maxBroj
 	 * @param tag
 	 * @return Niz poruka koje sadrze uneti tag.

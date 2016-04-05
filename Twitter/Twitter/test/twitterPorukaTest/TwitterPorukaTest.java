@@ -1,4 +1,4 @@
-package test;
+package twitterPorukaTest;
 
 import static org.junit.Assert.*;
 
@@ -22,11 +22,17 @@ public class TwitterPorukaTest {
 	public static void tearDownAfterClass() throws Exception {
 	}
 
+	/**
+	 * @throws java.lang.Exception
+	 */
 	@Before
 	public void setUp() throws Exception {
 		tp = new TwitterPoruka();
 	}
 
+	/**
+	 * @throws java.lang.Exception
+	 */
 	@After
 	public void tearDown() throws Exception {
 		tp = null;
@@ -40,22 +46,50 @@ public class TwitterPorukaTest {
 		assertEquals("Pera", tp.getKorisnik());
 	}
 
+	@Test (expected = java.lang.RuntimeException.class)
+ 	public void testSetPorukaJeNull(){
+ 		
+		tp.setPoruka(null);	
+ 	}
+ 	
+ 	@Test
+ 	public void testSetPorukaPrazanString(){
+ 		
+ 		tp.setPoruka("");
+ 	}
 	
 	@Test (expected = java.lang.RuntimeException.class)
-	public void testSetPoruka() {
+	public void testSetKorisnikJeNULL(){
 		
-		String poruka = null;
+ 		tp.setKorisnik(null);
+ 		
+ 	}
+	
+	@Test (expected = java.lang.RuntimeException.class)
+	public void testSetKorisnikjePrazanString(){
 		
-		for(int i = 0; i < 160; i++){
-			poruka.concat("aa"); //Duzina poruke je duza od 140.
-		}
-		
-		tp.setPoruka(poruka);
-		
-		if(tp.getPoruka().length() > 140){
-			throw new RuntimeException("Duzina poruke je duza od predvidjene.");
-		}
-	}
+ 		tp.setKorisnik("");
+ 		
+ 	}
+	
+
+	@Test (expected = java.lang.RuntimeException.class)
+ 	public void testSetPorukaPuno(){
+ 		
+		String poruka = "";
+ 		
+ 		for (int i = 0; i < 160; i++)
+ 			poruka +=("Puno,puno,punooo slovaaa."); //Duzina poruke je duza od 140.
+ 		
+ 		tp.setPoruka(poruka);
+ 	}
+	
+ 	@Test
+ 	public void testSetPorukaValjdaRadi(){
+ 		
+ 		tp.setPoruka("Ne znam sta bih stavio...");
+ 		assertEquals("Ne znam sta bih stavio...", tp.getPoruka());
+ 	}
 
 	@Test
 	public void testToString() {

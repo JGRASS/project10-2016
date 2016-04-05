@@ -2,7 +2,7 @@ package com.twitter.poruke;
 /**
  * <h1>Twitter poruka</h1>
  * 
- * Ova metoda se bavi korisniom i njegovom porukom.
+ * Ova metoda se bavi korisnikom i njegovom porukom.
  * 
  * @author Luka
  *
@@ -19,7 +19,7 @@ public class TwitterPoruka {
 	private String poruka; 
 
 	/**
-	 * 
+	 * Metoda vraca ime (ako postoji, i prezime).
 	 * @return Ime (i prezime) korisnika.
 	 */
 	public String getKorisnik() { 
@@ -27,6 +27,7 @@ public class TwitterPoruka {
 	} 
 	/**
 	 * Ova metoda postavlja ime korisnika na vrednost zadatog parametra.
+	 * @throws RuntimeException
 	 * @param korisnik
 	 */
 	public void setKorisnik(String korisnik) { 
@@ -36,7 +37,7 @@ public class TwitterPoruka {
 	} 
 
 	/**
-	 * 
+	 * Metoda vraca ispisanu poruku.
 	 * @return Ispisanu poruku.
 	 */
 	public String getPoruka() { 
@@ -45,6 +46,7 @@ public class TwitterPoruka {
 
 	/**
 	 * Ova metoda daje atributu 'poruka' vrednost zadatog parametra.
+	 * @throws RuntimeException
 	 * @param poruka
 	 */
 	public void setPoruka(String poruka) { 
@@ -54,6 +56,7 @@ public class TwitterPoruka {
 	} 
 
 	/**
+	 * Metoda vraca ime (i prezime) i njegovu poruku.
 	 * @return Ime (i prezime) korisnika i njegovu poruku.
 	 */
 	public String toString(){ 
