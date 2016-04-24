@@ -7,7 +7,6 @@ public class Tim {
 	private String Ime;
 	private String ImeHale;
 	
-	private LinkedList<String> Igrac = new LinkedList<String>();
 	private LinkedList<Utakmica> utakmice = new LinkedList<Utakmica>();
 	
 	public String getIme() {
@@ -21,12 +20,6 @@ public class Tim {
 	}
 	public void setImeHale(String imeHale) {
 		ImeHale = imeHale;
-	}
-	public LinkedList<String> getIgrac() {
-		return Igrac;
-	}
-	public void setIgrac(LinkedList<String> igrac) {
-		Igrac = igrac;
 	}
 	public LinkedList<Utakmica> getUtakmice() {
 		return utakmice;
