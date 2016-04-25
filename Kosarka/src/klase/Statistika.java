@@ -1,6 +1,8 @@
 package klase;
 
-public class Statistika {
+import java.io.Serializable;
+
+public class Statistika implements Serializable{
 
 	private int poeni;
 	
@@ -119,6 +121,16 @@ public class Statistika {
 		this.napravljenaBlokade = napravljenaBlokade;
 		this.nacinjeniFaulovi = nacinjeniFaulovi;
 	}
+	@Override
+	public String toString() {
+		return "Statistika [poeni=" + poeni + ", pogodjeniZaJedan=" + pogodjeniZaJedan + ", suteviZaJedan="
+				+ suteviZaJedan + ", pogodjeniZaDva=" + pogodjeniZaDva + ", suteviZaDva=" + suteviZaDva
+				+ ", pogodjeniZaTri=" + pogodjeniZaTri + ", suteviZaTri=" + suteviZaTri + ", skokovi=" + skokovi
+				+ ", oduzeteLopte=" + oduzeteLopte + ", izgubljeneLopte=" + izgubljeneLopte + ", asistencije="
+				+ asistencije + ", napravljenaBlokade=" + napravljenaBlokade + ", nacinjeniFaulovi=" + nacinjeniFaulovi
+				+ "]";
+	}
+	
 	
 	
 }

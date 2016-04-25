@@ -1,53 +1,47 @@
 package klase;
 
-public class Utakmica {
+import java.io.Serializable;
+
+public class Utakmica implements Serializable{
 
 	private int ID;
-	
-	private Tim domaci;
-	private Tim gosti;
+	private String protivnik;
+	private Statistika statistika;
 
-	private Statistika StatistikaDomaci;
-	private Statistika StatistikaGosti;
-	
-	
 	public int getID() {
 		return ID;
 	}
+
 	public void setID(int iD) {
 		ID = iD;
 	}
-	public Tim getDomaci() {
-		return domaci;
+
+	public String getProtivnik() {
+		return protivnik;
 	}
-	public void setDomaci(Tim domaci) {
-		this.domaci = domaci;
+
+	public void setProtivnik(String protivnik) {
+		this.protivnik = protivnik;
 	}
-	public Tim getGosti() {
-		return gosti;
+
+	public Statistika getStatistika() {
+		return statistika;
 	}
-	public void setGosti(Tim gosti) {
-		this.gosti = gosti;
+
+	public void setStatistika(Statistika statistika) {
+		this.statistika = statistika;
 	}
-	public Statistika getStatistikaDomaci() {
-		return StatistikaDomaci;
-	}
-	public void setStatistikaDomaci(Statistika statistikaDomaci) {
-		StatistikaDomaci = statistikaDomaci;
-	}
-	public Statistika getStatistikaGosti() {
-		return StatistikaGosti;
-	}
-	public void setStatistikaGosti(Statistika statistikaGosti) {
-		StatistikaGosti = statistikaGosti;
-	}
-	public Utakmica(int iD, Tim domaci, Tim gosti, Statistika statistikaDomaci, Statistika statistikaGosti) {
+
+	public Utakmica(int iD, String protivnik, Statistika statistika) {
 		super();
 		ID = iD;
-		this.domaci = domaci;
-		this.gosti = gosti;
-		StatistikaDomaci = statistikaDomaci;
-		StatistikaGosti = statistikaGosti;
+		this.protivnik = protivnik;
+		this.statistika = statistika;
+	}
+
+	@Override
+	public String toString() {
+		return "Utakmica [ID=" + ID + ", protivnik=" + protivnik + ", statistika=" + statistika + "]";
 	}
 	
 	

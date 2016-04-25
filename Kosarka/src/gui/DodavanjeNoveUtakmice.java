@@ -96,7 +96,7 @@ public class DodavanjeNoveUtakmice extends JFrame {
 	private JLabel lblBrojSutevaZa_1;
 	private JSpinner spinnerBrSutevaZaTriDom;
 	private JSpinner spinnerBrSutevaZaTriGos;
-	private int i = 0;
+	private int index = 0;
 
 	/**
 	 * Create the frame.
@@ -235,14 +235,20 @@ public class DodavanjeNoveUtakmice extends JFrame {
 							pogSlobodnaGos, brSlobodnihGos, pogDvojkeGos, brSutevaZaDvaGos, pogTrojkeGos, brSutevaZaTriGos, 
 							skokoviGos, oduzeteLopteGos, izgubljeneLopteGos, asistencijeGos, blokadeGos, fauloviGos);
 					
+					
 					for (int i = 0; i < GUIKontroler.getTimovi().size(); i++) {
-						if(dom.equals(GUIKontroler.getTimovi().get(i))){
-							GUIKontroler.getTimovi().get(i).getUtakmice().add(new Utakmica(i++, dom, gos, domStat, gosStat));
+						Tim t = GUIKontroler.getTimovi().get(i);
+						if(dom.equals(t)){
+							t.getUtakmice().add(new Utakmica(0, gos.getIme(), domStat));
 						}
-						if(gos.equals(GUIKontroler.getTimovi().get(i))){
-							GUIKontroler.getTimovi().get(i).getUtakmice().add(new Utakmica(i++, dom, gos, domStat, gosStat));
+						if(gos.equals(t)){
+							t.getUtakmice().add(new Utakmica(0, dom.getIme(), gosStat));
 						}
 					}
+					
+					
+					
+					GUIKontroler.serializeElementPoElement();
 					
 					dispose();
 					

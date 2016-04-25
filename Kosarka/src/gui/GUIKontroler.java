@@ -6,14 +6,19 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
+import java.io.BufferedOutputStream;
+import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
 import klase.Tim;
 
-public class GUIKontroler {
+public class GUIKontroler{
 	
 	private static List<Tim> timovi = new ArrayList<>();
 	
@@ -88,5 +93,37 @@ public class GUIKontroler {
 		}
 	}
 
+	public static void serializeElementPoElement(){
+		try {
+			ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("NBAtimovi.out")));
+			for (int i = 0; i < timovi.size(); i++) {
+				out.writeObject(timovi.get(i));
+			}
+			out.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void deserializeElement(){
+		timovi.clear();
+		try {
+			ObjectInputStream in = new ObjectInputStream(new FileInputStream("NBAtimovi.out"));
+			while(true){
+				Tim t = (Tim) in.readObject();
+				timovi.add(t);
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
 	
 }
