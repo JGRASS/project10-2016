@@ -19,8 +19,10 @@ import javax.swing.BoxLayout;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Component;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-public class PocetnaStrana {
+public class PocetnaStrana extends JFrame{
 
 	private JFrame frame;
 	private JPanel panel;
@@ -41,6 +43,7 @@ public class PocetnaStrana {
 				try {
 					PocetnaStrana window = new PocetnaStrana();
 					window.frame.setVisible(true);
+					GUIKontroler.ucitajUListu();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -119,6 +122,13 @@ public class PocetnaStrana {
 	private JButton getBtnNewButton_1() {
 		if (btnNewButton_1 == null) {
 			btnNewButton_1 = new JButton("DODAVANJE NOVE UTAKMICE");
+			btnNewButton_1.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					DodavanjeNoveUtakmice utakmicaProzor = new DodavanjeNoveUtakmice();
+					utakmicaProzor.setVisible(true);
+					utakmicaProzor.setLocationRelativeTo(null);
+				}
+			});
 		}
 		return btnNewButton_1;
 	}

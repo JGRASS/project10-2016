@@ -1,13 +1,22 @@
 package klase;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 
-public class Tim {
+public class Tim implements Serializable{
 
 	private String Ime;
 	private String ImeHale;
 	
 	private LinkedList<Utakmica> utakmice = new LinkedList<Utakmica>();
+	
+	
+	public Tim(String ime, String imeHale, LinkedList<Utakmica> utakmice) {
+		super();
+		Ime = ime;
+		ImeHale = imeHale;
+		this.utakmice = utakmice;
+	}
 	
 	public String getIme() {
 		return Ime;
@@ -26,6 +35,11 @@ public class Tim {
 	}
 	public void setUtakmice(LinkedList<Utakmica> utakmice) {
 		this.utakmice = utakmice;
+	}
+
+	@Override
+	public String toString() {
+		return Ime;
 	}
 	
 	
