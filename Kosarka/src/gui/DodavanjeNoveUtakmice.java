@@ -235,18 +235,24 @@ public class DodavanjeNoveUtakmice extends JFrame {
 							pogSlobodnaGos, brSlobodnihGos, pogDvojkeGos, brSutevaZaDvaGos, pogTrojkeGos, brSutevaZaTriGos, 
 							skokoviGos, oduzeteLopteGos, izgubljeneLopteGos, asistencijeGos, blokadeGos, fauloviGos);
 					
+					int domBrPrimljenih = pogSlobodnaGos+2*pogDvojkeGos+3*pogTrojkeGos;
+					int gosBrPrimljenih = pogSlobodnaDom+2*pogDvojkeDom+3*pogTrojkeDom;
 					
 					for (int i = 0; i < GUIKontroler.getTimovi().size(); i++) {
 						Tim t = GUIKontroler.getTimovi().get(i);
 						if(dom.equals(t)){
-							t.getUtakmice().add(new Utakmica(0, gos.getIme(), domStat));
+							if(t.getUtakmice().isEmpty())
+								t.getUtakmice().add(new Utakmica(0, gos.getIme(), domStat, domBrPrimljenih));
+							else
+								t.getUtakmice().add(new Utakmica(t.getUtakmice().size(), gos.getIme(), domStat, domBrPrimljenih));
 						}
 						if(gos.equals(t)){
-							t.getUtakmice().add(new Utakmica(0, dom.getIme(), gosStat));
+							if(t.getUtakmice().isEmpty())
+								t.getUtakmice().add(new Utakmica(0, dom.getIme(), gosStat, gosBrPrimljenih));
+							else
+								t.getUtakmice().add(new Utakmica(t.getUtakmice().size(), dom.getIme(), gosStat, gosBrPrimljenih));
 						}
 					}
-					
-					
 					
 					GUIKontroler.serializeElementPoElement();
 					

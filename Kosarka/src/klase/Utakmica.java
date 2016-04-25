@@ -7,6 +7,7 @@ public class Utakmica implements Serializable{
 	private int ID;
 	private String protivnik;
 	private Statistika statistika;
+	private int brojPrimljenihPoena;
 
 	public int getID() {
 		return ID;
@@ -32,11 +33,20 @@ public class Utakmica implements Serializable{
 		this.statistika = statistika;
 	}
 
-	public Utakmica(int iD, String protivnik, Statistika statistika) {
+	public int getBrojPrimljenihPoena() {
+		return brojPrimljenihPoena;
+	}
+
+	public void setBrojPrimljenihPoena(int brojPrimljenihPoena) {
+		this.brojPrimljenihPoena = brojPrimljenihPoena;
+	}
+
+	public Utakmica(int iD, String protivnik, Statistika statistika, int brPrimljenih) {
 		super();
 		ID = iD;
 		this.protivnik = protivnik;
 		this.statistika = statistika;
+		this.brojPrimljenihPoena = brPrimljenih;
 	}
 
 	@Override

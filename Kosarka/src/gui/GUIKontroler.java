@@ -17,6 +17,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 import klase.Tim;
+import klase.Utakmica;
 
 public class GUIKontroler{
 	
@@ -31,7 +32,7 @@ public class GUIKontroler{
 	}
 	
 	public static void ucitajUListu(){
-		if(timovi.isEmpty()){
+		/*if(timovi.isEmpty()){
 			Tim Oklahoma = new Tim("Oklahoma City Thunder", "Chesapeake Energy Arena", new LinkedList<>());
 			Tim Portland = new Tim("Portland Trail Blazers", "Moda Center", new LinkedList<>());
 			Tim Utah = new Tim("Utah Jazz", "	Vivint Smart Home Arena", new LinkedList<>());
@@ -90,7 +91,8 @@ public class GUIKontroler{
 			timovi.add(Utah);
 			timovi.add(Portland);
 			timovi.add(Oklahoma);
-		}
+		}*/
+		deserializeElement();
 	}
 
 	public static void serializeElementPoElement(){
@@ -118,12 +120,43 @@ public class GUIKontroler{
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
-			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 	}
 	
+	public static int vratiUkupanBrPostigunih(Tim t){
+		int brojPostignutih = 0;
+		for (int i = 0; i < timovi.size(); i++) {
+			if(timovi.get(i).equals(t)){
+				for (int j = 0; j < timovi.get(i).getUtakmice().size(); j++) {
+					Utakmica u = timovi.get(i).getUtakmice().get(j);
+					brojPostignutih += u.getStatistika().getPoeni();
+				}
+			}
+		}
+		return brojPostignutih;
+	}
 	
+	public static int vratiUkupanBrPrimljenih(Tim t){
+		int brojPrimljenih = 0;
+		for (int i = 0; i < timovi.size(); i++) {
+			if(timovi.get(i).equals(t)){
+				for (int j = 0; j < timovi.get(i).getUtakmice().size(); j++) {
+					Utakmica u = timovi.get(i).getUtakmice().get(j);
+					brojPrimljenih += u.getBrojPrimljenihPoena();
+				}
+			}
+		}
+		return brojPrimljenih;
+	}
+	
+	public static void main(String[] args) {
+		deserializeElement();
+		System.out.println(timovi.get(0).getUtakmice().get(0));
+		System.out.println(timovi.get(0).getUtakmice().get(1));
+		Tim philly = timovi.get(0);
+		System.out.println(vratiUkupanBrPostigunih(philly));
+	}
 	
 }
