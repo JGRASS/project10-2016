@@ -29,6 +29,11 @@ import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormSpecs;
 import com.jgoodies.forms.layout.RowSpec;
+
+import klase.Statistika;
+import klase.Tim;
+import klase.Utakmica;
+
 import javax.swing.SpringLayout;
 import javax.swing.BoxLayout;
 import java.awt.CardLayout;
@@ -88,13 +93,17 @@ public class DodavanjeNoveUtakmice extends JFrame {
 	private JLabel lblNapravljeniFaulovi;
 	private JSpinner spinnerFauloviDom;
 	private JSpinner spinnerFauloviGos;
+	private JLabel lblBrojSutevaZa_1;
+	private JSpinner spinnerBrSutevaZaTriDom;
+	private JSpinner spinnerBrSutevaZaTriGos;
+	private int i = 0;
 
 	/**
 	 * Create the frame.
 	 */
 	public DodavanjeNoveUtakmice() {
 		setResizable(false);
-		setMinimumSize(new Dimension(600, 450));
+		setMinimumSize(new Dimension(600, 500));
 		setTitle("Dodavanje nove utakmice");
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -171,6 +180,9 @@ public class DodavanjeNoveUtakmice extends JFrame {
 			centralPanel.add(getLabel_4_2());
 			centralPanel.add(getSpinnerFauloviDom());
 			centralPanel.add(getSpinnerFauloviGos());
+			centralPanel.add(getLblBrojSutevaZa_1());
+			centralPanel.add(getSpinnerBrSutevaZaTriDom());
+			centralPanel.add(getSpinnerBrSutevaZaTriGos());
 			centralPanel.setVisible(false);
 		}
 		return centralPanel;
@@ -187,6 +199,52 @@ public class DodavanjeNoveUtakmice extends JFrame {
 			btnPotvrdiUnos = new JButton("Potvrdi unos");
 			btnPotvrdiUnos.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
+					int pogSlobodnaDom = (Integer) spinnerPogSlobodnaDom.getValue();
+					int pogSlobodnaGos = (Integer) spinnerPogSlobodnaGos.getValue();
+					int brSlobodnihDom = (Integer) spinnerBrSlobodnihDom.getValue();
+					int brSlobodnihGos = (Integer) spinnerBrSlobodnihGos.getValue();
+					int pogDvojkeDom = (Integer) spinnerPogDvojkeDom.getValue();
+					int pogDvojkeGos = (Integer) spinnerPogDvojkeGos.getValue();
+					int brSutevaZaDvaDom = (Integer) spinnerBrSutevaZaDvaDom.getValue();
+					int brSutevaZaDvaGos = (Integer) spinnerBrSutevaZaDvaGos.getValue();
+					int pogTrojkeDom = (Integer) spinnerPogTrojkeDom.getValue();
+					int pogTrojkeGos = (Integer) spinnerPogTrojkeGos.getValue();
+					int brSutevaZaTriDom = (Integer) spinnerBrSutevaZaTriDom.getValue();
+					int brSutevaZaTriGos = (Integer) spinnerBrSutevaZaTriGos.getValue();
+					int skokoviDom = (Integer) spinnerSkokoviDom.getValue();
+					int skokoviGos = (Integer) spinnerSkokoviGos.getValue();
+					int oduzeteLopteDom = (Integer) spinnerOduzeteDom.getValue();
+					int oduzeteLopteGos = (Integer) spinnerOduzeteGos.getValue();
+					int izgubljeneLopteDom = (Integer) spinnerIzgubljeneDom.getValue();
+					int izgubljeneLopteGos = (Integer) spinnerIzgubljeneGos.getValue();
+					int asistencijeDom = (Integer) spinnerAsistencijeDom.getValue();
+					int asistencijeGos = (Integer) spinnerAsistencijeDom.getValue();
+					int blokadeDom = (Integer) spinnerBlokadeDom.getValue();
+					int blokadeGos = (Integer) spinnerBlokadeGos.getValue();
+					int fauloviDom = (Integer) spinnerFauloviDom.getValue();
+					int fauloviGos = (Integer) spinnerFauloviGos.getValue();
+					
+					Tim dom = (Tim) comboBoxDomaci.getSelectedItem();
+					Tim gos = (Tim) comboBoxGosti.getSelectedItem();
+					
+					Statistika domStat = new Statistika(pogSlobodnaDom+2*pogDvojkeDom+3*pogTrojkeDom, 
+							pogSlobodnaDom, brSlobodnihDom, pogDvojkeDom, brSutevaZaDvaDom, pogTrojkeDom, brSutevaZaTriDom, 
+							skokoviDom, oduzeteLopteDom, izgubljeneLopteDom, asistencijeDom, blokadeDom, fauloviDom);
+					
+					Statistika gosStat = new Statistika(pogSlobodnaGos+2*pogDvojkeGos+3*pogTrojkeGos, 
+							pogSlobodnaGos, brSlobodnihGos, pogDvojkeGos, brSutevaZaDvaGos, pogTrojkeGos, brSutevaZaTriGos, 
+							skokoviGos, oduzeteLopteGos, izgubljeneLopteGos, asistencijeGos, blokadeGos, fauloviGos);
+					
+					for (int i = 0; i < GUIKontroler.getTimovi().size(); i++) {
+						if(dom.equals(GUIKontroler.getTimovi().get(i))){
+							GUIKontroler.getTimovi().get(i).getUtakmice().add(new Utakmica(i++, dom, gos, domStat, gosStat));
+						}
+						if(gos.equals(GUIKontroler.getTimovi().get(i))){
+							GUIKontroler.getTimovi().get(i).getUtakmice().add(new Utakmica(i++, dom, gos, domStat, gosStat));
+						}
+					}
+					
+					dispose();
 					
 				}
 			});
@@ -430,7 +488,7 @@ public class DodavanjeNoveUtakmice extends JFrame {
 	private JLabel getLabel_4_1() {
 		if (lblBrojSutevaZa == null) {
 			lblBrojSutevaZa = new JLabel("Skokovi");
-			lblBrojSutevaZa.setBounds(10, 171, 129, 14);
+			lblBrojSutevaZa.setBounds(10, 199, 129, 14);
 		}
 		return lblBrojSutevaZa;
 	}
@@ -438,7 +496,7 @@ public class DodavanjeNoveUtakmice extends JFrame {
 		if (spinnerSkokoviDom == null) {
 			spinnerSkokoviDom = new JSpinner();
 			spinnerSkokoviDom.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
-			spinnerSkokoviDom.setBounds(150, 168, 120, 20);
+			spinnerSkokoviDom.setBounds(150, 196, 120, 20);
 		}
 		return spinnerSkokoviDom;
 	}
@@ -446,14 +504,14 @@ public class DodavanjeNoveUtakmice extends JFrame {
 		if (spinnerSkokoviGos == null) {
 			spinnerSkokoviGos = new JSpinner();
 			spinnerSkokoviGos.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
-			spinnerSkokoviGos.setBounds(280, 168, 120, 20);
+			spinnerSkokoviGos.setBounds(280, 196, 120, 20);
 		}
 		return spinnerSkokoviGos;
 	}
 	private JLabel getLblAsistencije() {
 		if (lblAsistencije == null) {
 			lblAsistencije = new JLabel("Asistencije");
-			lblAsistencije.setBounds(10, 199, 129, 14);
+			lblAsistencije.setBounds(10, 227, 129, 14);
 		}
 		return lblAsistencije;
 	}
@@ -461,7 +519,7 @@ public class DodavanjeNoveUtakmice extends JFrame {
 		if (spinnerAsistencijeDom == null) {
 			spinnerAsistencijeDom = new JSpinner();
 			spinnerAsistencijeDom.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
-			spinnerAsistencijeDom.setBounds(150, 196, 120, 20);
+			spinnerAsistencijeDom.setBounds(150, 224, 120, 20);
 		}
 		return spinnerAsistencijeDom;
 	}
@@ -469,14 +527,14 @@ public class DodavanjeNoveUtakmice extends JFrame {
 		if (spinnerAsistencijeGos == null) {
 			spinnerAsistencijeGos = new JSpinner();
 			spinnerAsistencijeGos.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
-			spinnerAsistencijeGos.setBounds(280, 196, 120, 20);
+			spinnerAsistencijeGos.setBounds(280, 224, 120, 20);
 		}
 		return spinnerAsistencijeGos;
 	}
 	private JLabel getLblIzgubljeneLopte() {
 		if (lblIzgubljeneLopte == null) {
 			lblIzgubljeneLopte = new JLabel("Izgubljene lopte");
-			lblIzgubljeneLopte.setBounds(10, 227, 129, 14);
+			lblIzgubljeneLopte.setBounds(10, 255, 129, 14);
 		}
 		return lblIzgubljeneLopte;
 	}
@@ -484,7 +542,7 @@ public class DodavanjeNoveUtakmice extends JFrame {
 		if (spinnerIzgubljeneDom == null) {
 			spinnerIzgubljeneDom = new JSpinner();
 			spinnerIzgubljeneDom.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
-			spinnerIzgubljeneDom.setBounds(150, 224, 120, 20);
+			spinnerIzgubljeneDom.setBounds(150, 252, 120, 20);
 		}
 		return spinnerIzgubljeneDom;
 	}
@@ -492,14 +550,14 @@ public class DodavanjeNoveUtakmice extends JFrame {
 		if (spinnerIzgubljeneGos == null) {
 			spinnerIzgubljeneGos = new JSpinner();
 			spinnerIzgubljeneGos.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
-			spinnerIzgubljeneGos.setBounds(280, 224, 120, 20);
+			spinnerIzgubljeneGos.setBounds(280, 252, 120, 20);
 		}
 		return spinnerIzgubljeneGos;
 	}
 	private JLabel getLblOduzeteLopte() {
 		if (lblOduzeteLopte == null) {
 			lblOduzeteLopte = new JLabel("Oduzete lopte");
-			lblOduzeteLopte.setBounds(10, 255, 129, 14);
+			lblOduzeteLopte.setBounds(10, 283, 129, 14);
 		}
 		return lblOduzeteLopte;
 	}
@@ -507,7 +565,7 @@ public class DodavanjeNoveUtakmice extends JFrame {
 		if (spinnerOduzeteDom == null) {
 			spinnerOduzeteDom = new JSpinner();
 			spinnerOduzeteDom.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
-			spinnerOduzeteDom.setBounds(150, 252, 120, 20);
+			spinnerOduzeteDom.setBounds(150, 280, 120, 20);
 		}
 		return spinnerOduzeteDom;
 	}
@@ -515,14 +573,14 @@ public class DodavanjeNoveUtakmice extends JFrame {
 		if (spinnerOduzeteGos == null) {
 			spinnerOduzeteGos = new JSpinner();
 			spinnerOduzeteGos.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
-			spinnerOduzeteGos.setBounds(280, 252, 120, 20);
+			spinnerOduzeteGos.setBounds(280, 280, 120, 20);
 		}
 		return spinnerOduzeteGos;
 	}
 	private JLabel getLblNapravljeneBlokade() {
 		if (lblNapravljeneBlokade == null) {
 			lblNapravljeneBlokade = new JLabel("Napravljene blokade");
-			lblNapravljeneBlokade.setBounds(10, 281, 129, 14);
+			lblNapravljeneBlokade.setBounds(10, 309, 129, 14);
 		}
 		return lblNapravljeneBlokade;
 	}
@@ -530,7 +588,7 @@ public class DodavanjeNoveUtakmice extends JFrame {
 		if (spinnerBlokadeDom == null) {
 			spinnerBlokadeDom = new JSpinner();
 			spinnerBlokadeDom.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
-			spinnerBlokadeDom.setBounds(150, 278, 120, 20);
+			spinnerBlokadeDom.setBounds(150, 306, 120, 20);
 		}
 		return spinnerBlokadeDom;
 	}
@@ -538,14 +596,14 @@ public class DodavanjeNoveUtakmice extends JFrame {
 		if (spinnerBlokadeGos == null) {
 			spinnerBlokadeGos = new JSpinner();
 			spinnerBlokadeGos.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
-			spinnerBlokadeGos.setBounds(280, 278, 120, 20);
+			spinnerBlokadeGos.setBounds(280, 306, 120, 20);
 		}
 		return spinnerBlokadeGos;
 	}
 	private JLabel getLabel_4_2() {
 		if (lblNapravljeniFaulovi == null) {
 			lblNapravljeniFaulovi = new JLabel("Napravljeni faulovi");
-			lblNapravljeniFaulovi.setBounds(10, 307, 129, 14);
+			lblNapravljeniFaulovi.setBounds(10, 335, 129, 14);
 		}
 		return lblNapravljeniFaulovi;
 	}
@@ -553,7 +611,7 @@ public class DodavanjeNoveUtakmice extends JFrame {
 		if (spinnerFauloviDom == null) {
 			spinnerFauloviDom = new JSpinner();
 			spinnerFauloviDom.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
-			spinnerFauloviDom.setBounds(150, 304, 120, 20);
+			spinnerFauloviDom.setBounds(150, 332, 120, 20);
 		}
 		return spinnerFauloviDom;
 	}
@@ -561,8 +619,29 @@ public class DodavanjeNoveUtakmice extends JFrame {
 		if (spinnerFauloviGos == null) {
 			spinnerFauloviGos = new JSpinner();
 			spinnerFauloviGos.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
-			spinnerFauloviGos.setBounds(280, 304, 120, 20);
+			spinnerFauloviGos.setBounds(280, 332, 120, 20);
 		}
 		return spinnerFauloviGos;
+	}
+	private JLabel getLblBrojSutevaZa_1() {
+		if (lblBrojSutevaZa_1 == null) {
+			lblBrojSutevaZa_1 = new JLabel("Broj suteva za tri");
+			lblBrojSutevaZa_1.setBounds(10, 171, 129, 14);
+		}
+		return lblBrojSutevaZa_1;
+	}
+	private JSpinner getSpinnerBrSutevaZaTriDom() {
+		if (spinnerBrSutevaZaTriDom == null) {
+			spinnerBrSutevaZaTriDom = new JSpinner();
+			spinnerBrSutevaZaTriDom.setBounds(150, 168, 120, 20);
+		}
+		return spinnerBrSutevaZaTriDom;
+	}
+	private JSpinner getSpinnerBrSutevaZaTriGos() {
+		if (spinnerBrSutevaZaTriGos == null) {
+			spinnerBrSutevaZaTriGos = new JSpinner();
+			spinnerBrSutevaZaTriGos.setBounds(280, 168, 120, 20);
+		}
+		return spinnerBrSutevaZaTriGos;
 	}
 }

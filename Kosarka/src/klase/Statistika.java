@@ -101,4 +101,24 @@ public class Statistika {
 	public void setNacinjeniFaulovi(int nacinjeniFaulovi) {
 		this.nacinjeniFaulovi = nacinjeniFaulovi;
 	}
+	public Statistika(int poeni, int pogodjeniZaJedan, int suteviZaJedan, int pogodjeniZaDva, int suteviZaDva,
+			int pogodjeniZaTri, int suteviZaTri, int skokovi, int oduzeteLopte, int izgubljeneLopte, int asistencije,
+			int napravljenaBlokade, int nacinjeniFaulovi) {
+		super();
+		this.poeni = poeni;
+		this.pogodjeniZaJedan = pogodjeniZaJedan;
+		this.suteviZaJedan = suteviZaJedan;
+		this.pogodjeniZaDva = pogodjeniZaDva;
+		this.suteviZaDva = suteviZaDva;
+		this.pogodjeniZaTri = pogodjeniZaTri;
+		this.suteviZaTri = suteviZaTri;
+		this.skokovi = skokovi;
+		this.oduzeteLopte = oduzeteLopte;
+		this.izgubljeneLopte = izgubljeneLopte;
+		this.asistencije = asistencije;
+		this.napravljenaBlokade = napravljenaBlokade;
+		this.nacinjeniFaulovi = nacinjeniFaulovi;
+	}
+	
+	
 }

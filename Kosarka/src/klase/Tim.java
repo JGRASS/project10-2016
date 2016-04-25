@@ -41,6 +41,15 @@ public class Tim implements Serializable{
 	public String toString() {
 		return Ime;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		Tim t = (Tim) obj;
+		if(this.Ime.equals(t.Ime))
+			return true;
+		else
+			return false;
+	}
 	
 	
 	

@@ -41,4 +41,14 @@ public class Utakmica {
 	public void setStatistikaGosti(Statistika statistikaGosti) {
 		StatistikaGosti = statistikaGosti;
 	}
+	public Utakmica(int iD, Tim domaci, Tim gosti, Statistika statistikaDomaci, Statistika statistikaGosti) {
+		super();
+		ID = iD;
+		this.domaci = domaci;
+		this.gosti = gosti;
+		StatistikaDomaci = statistikaDomaci;
+		StatistikaGosti = statistikaGosti;
+	}
+	
+	
 }
