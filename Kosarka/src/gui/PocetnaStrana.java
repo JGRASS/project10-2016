@@ -116,6 +116,13 @@ public class PocetnaStrana extends JFrame{
 	private JButton getBtnNewButton() {
 		if (btnNewButton == null) {
 			btnNewButton = new JButton("STATISTIKA");
+			btnNewButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					StatGui stat = new StatGui();
+					stat.setVisible(true);
+					stat.setLocationRelativeTo(null);
+				}
+			});
 		}
 		return btnNewButton;
 	}

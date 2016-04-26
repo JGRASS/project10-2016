@@ -18,6 +18,8 @@ public class Tim implements Serializable{
 		this.utakmice = utakmice;
 	}
 	
+	
+
 	public String getIme() {
 		return Ime;
 	}

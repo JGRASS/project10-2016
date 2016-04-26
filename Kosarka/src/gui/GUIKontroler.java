@@ -155,8 +155,118 @@ public class GUIKontroler{
 		deserializeElement();
 		System.out.println(timovi.get(0).getUtakmice().get(0));
 		System.out.println(timovi.get(0).getUtakmice().get(1));
+		System.out.println(timovi.get(0).getUtakmice().get(2));
+		
 		Tim philly = timovi.get(0);
 		System.out.println(vratiUkupanBrPostigunih(philly));
 	}
+	public static int pozicijaTima(Tim t){
+		int pozicija = 0;
+		for(int i=1;i<timovi.size();i++){
+			if(t.equals(timovi.get(i))) pozicija = i;
+			
+		}
+		return pozicija;
+	}
+	public static int ukupanZa1(Tim t){
+		int uk = 0;
+		for(int i=0;i<timovi.get(pozicijaTima(t)).getUtakmice().size();i++){
+			uk = uk + timovi.get(pozicijaTima(t)).getUtakmice().get(i).getStatistika().getSuteviZaJedan();
+			
+		}
+		return uk;
+		
+	}
+	public static int pogodjenZa1(Tim t){
+		int uk = 0;
+		for(int i=0;i<timovi.get(pozicijaTima(t)).getUtakmice().size();i++){
+			uk = uk + timovi.get(pozicijaTima(t)).getUtakmice().get(i).getStatistika().getPogodjeniZaJedan();
+			
+		}
+		return uk ;
+		
+	}
+	public static int ukupanZa2(Tim t){
+		int uk = 0;
+		for(int i=0;i<timovi.get(pozicijaTima(t)).getUtakmice().size();i++){
+			uk = uk + timovi.get(pozicijaTima(t)).getUtakmice().get(i).getStatistika().getSuteviZaDva();
+			
+		}
+		return uk;
+		
+	}
+	public static int pogodjenZa2(Tim t){
+		int uk = 0;
+		for(int i=0;i<timovi.get(pozicijaTima(t)).getUtakmice().size();i++){
+			uk = uk + timovi.get(pozicijaTima(t)).getUtakmice().get(i).getStatistika().getPogodjeniZaDva();
+			
+		}
+		return uk;
+		
+	}
+	public static int ukupanZa3(Tim t){
+		int uk = 0;
+		for(int i=0;i<timovi.get(pozicijaTima(t)).getUtakmice().size();i++){
+			uk = uk + timovi.get(pozicijaTima(t)).getUtakmice().get(i).getStatistika().getSuteviZaTri();
+			
+		}
+		return uk;
+		
+	}
+	public static int pogodjenZa3(Tim t){
+		int uk = 0;
+		for(int i=0;i<timovi.get(pozicijaTima(t)).getUtakmice().size();i++){
+			uk = uk + timovi.get(pozicijaTima(t)).getUtakmice().get(i).getStatistika().getPogodjeniZaTri();
+			
+		}
+		return uk;
+		
+	}
+	public static double prosecanBrSkokova(Tim t){
+		int ukupno = 0;
+		for (int i = 0; i < timovi.get(pozicijaTima(t)).getUtakmice().size(); i++) {
+			ukupno += timovi.get(pozicijaTima(t)).getUtakmice().get(i).getStatistika().getSkokovi();
+		}
+		return (double)ukupno / timovi.get(pozicijaTima(t)).getUtakmice().size();
+	}
 	
+	public static double prosecanBrAsistencija(Tim t){
+		int ukupno = 0;
+		for (int i = 0; i < timovi.get(pozicijaTima(t)).getUtakmice().size(); i++) {
+			ukupno += timovi.get(pozicijaTima(t)).getUtakmice().get(i).getStatistika().getAsistencije();
+		}
+		return (double)ukupno / timovi.get(pozicijaTima(t)).getUtakmice().size();
+	}
+	
+	public static double prosecanBrIzgubljenih(Tim t){
+		int ukupno = 0;
+		for (int i = 0; i < timovi.get(pozicijaTima(t)).getUtakmice().size(); i++) {
+			ukupno += timovi.get(pozicijaTima(t)).getUtakmice().get(i).getStatistika().getIzgubljeneLopte();
+		}
+		return (double)ukupno / timovi.get(pozicijaTima(t)).getUtakmice().size();
+	}
+	
+	public static double prosecanBrOduzetih(Tim t){
+		int ukupno = 0;
+		for (int i = 0; i < timovi.get(pozicijaTima(t)).getUtakmice().size(); i++) {
+			ukupno += timovi.get(pozicijaTima(t)).getUtakmice().get(i).getStatistika().getOduzeteLopte();
+		}
+		return (double)ukupno / timovi.get(pozicijaTima(t)).getUtakmice().size();
+	}
+	
+	public static double prosecanBrBlokada(Tim t){
+		int ukupno = 0;
+		for (int i = 0; i < timovi.get(pozicijaTima(t)).getUtakmice().size(); i++) {
+			ukupno += timovi.get(pozicijaTima(t)).getUtakmice().get(i).getStatistika().getNapravljenaBlokade();
+		}
+		return (double)ukupno / timovi.get(pozicijaTima(t)).getUtakmice().size();
+	}
+	
+	public static double prosecanBrFaulova(Tim t){
+		int ukupno = 0;
+		for (int i = 0; i < timovi.get(pozicijaTima(t)).getUtakmice().size(); i++) {
+			ukupno += timovi.get(pozicijaTima(t)).getUtakmice().get(i).getStatistika().getNacinjeniFaulovi();
+		}
+		return (double)ukupno / timovi.get(pozicijaTima(t)).getUtakmice().size();
+	}
 }
