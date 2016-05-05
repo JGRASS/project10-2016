@@ -122,6 +122,12 @@ public class PocetnaStrana extends JFrame{
 	private JButton getBtnNewButton_2() {
 		if (btnNewButton_2 == null) {
 			btnNewButton_2 = new JButton("PREDVIDJANJE");
+			btnNewButton_2.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					OkiPredvidjanje predvidjaj = new OkiPredvidjanje();
+					predvidjaj.setVisible(true);
+				}
+			});
 		}
 		return btnNewButton_2;
 	}
