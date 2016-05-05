@@ -8,6 +8,9 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.Color;
 import javax.swing.SwingConstants;
+
+import klase.Liga;
+
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeEvent;
 import java.awt.FlowLayout;
@@ -34,22 +37,7 @@ public class PocetnaStrana extends JFrame{
 	private JButton btnNewButton_1;
 	private JButton btnNewButton_2;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					PocetnaStrana window = new PocetnaStrana();
-					window.frame.setVisible(true);
-					GUIKontroler.ucitajUListu();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the application.

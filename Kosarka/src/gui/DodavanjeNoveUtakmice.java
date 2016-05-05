@@ -30,6 +30,7 @@ import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormSpecs;
 import com.jgoodies.forms.layout.RowSpec;
 
+import klase.Liga;
 import klase.Statistika;
 import klase.Tim;
 import klase.Utakmica;
@@ -238,8 +239,8 @@ public class DodavanjeNoveUtakmice extends JFrame {
 					int domBrPrimljenih = pogSlobodnaGos+2*pogDvojkeGos+3*pogTrojkeGos;
 					int gosBrPrimljenih = pogSlobodnaDom+2*pogDvojkeDom+3*pogTrojkeDom;
 					
-					for (int i = 0; i < GUIKontroler.getTimovi().size(); i++) {
-						Tim t = GUIKontroler.getTimovi().get(i);
+					for (int i = 0; i < Liga.getTimovi().size(); i++) {
+						Tim t = Liga.getTimovi().get(i);
 						if(dom.equals(t)){
 							if(t.getUtakmice().isEmpty())
 								t.getUtakmice().add(new Utakmica(0, gos.getIme(), domStat, domBrPrimljenih));
@@ -254,7 +255,7 @@ public class DodavanjeNoveUtakmice extends JFrame {
 						}
 					}
 					
-					GUIKontroler.serializeElementPoElement();
+					Liga.serializeElementPoElement();
 					
 					dispose();
 					
@@ -298,8 +299,8 @@ public class DodavanjeNoveUtakmice extends JFrame {
 	private JComboBox getComboBoxDomaci() {
 		if (comboBoxDomaci == null) {
 			comboBoxDomaci = new JComboBox();
-			for (int i = 0; i < GUIKontroler.getTimovi().size(); i++) {
-				comboBoxDomaci.addItem(GUIKontroler.getTimovi().get(i));
+			for (int i = 0; i < Liga.getTimovi().size(); i++) {
+				comboBoxDomaci.addItem(Liga.getTimovi().get(i));
 			}
 			comboBoxDomaci.setPreferredSize(new Dimension(130, 20));
 		}
@@ -314,8 +315,8 @@ public class DodavanjeNoveUtakmice extends JFrame {
 	private JComboBox getComboBoxGosti() {
 		if (comboBoxGosti == null) {
 			comboBoxGosti = new JComboBox();
-			for (int i = 0; i < GUIKontroler.getTimovi().size(); i++) {
-				comboBoxGosti.addItem(GUIKontroler.getTimovi().get(i));
+			for (int i = 0; i < Liga.getTimovi().size(); i++) {
+				comboBoxGosti.addItem(Liga.getTimovi().get(i));
 			}
 			comboBoxGosti.setPreferredSize(new Dimension(130, 20));
 		}
