@@ -173,36 +173,30 @@ public class StatGui extends JFrame {
 		
 		
 		JComboBox comboBox = new JComboBox();
-		for (int j = 0; j < Liga.getTimovi().size(); j++) {
-			comboBox.addItem(Liga.getTimovi().get(j));
-		}
+		GUIKontroler.popuni(comboBox);
+		
 		comboBox.setBounds(159, -3, 90, 20);
 		getContentPane().add(comboBox);
 		
 		JButton btn = new JButton("OK");
 		btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Tim  t = (Tim) comboBox.getSelectedItem();
-				 l1.setText(Integer.toString(Liga.ukupanZa1(t)));
-					l11.setText(Integer.toString(Liga.pogodjenZa1(t)));
-					l2.setText(Integer.toString(Liga.ukupanZa2(t)));
-					l22.setText(Integer.toString(Liga.pogodjenZa2(t)));
-					l3.setText(Integer.toString(Liga.ukupanZa3(t)));
-					l33.setText(Integer.toString(Liga.pogodjenZa3(t)));
-					a.setText(Double.toString(Liga.prosecanBrAsistencija(t)));
-					s.setText(Double.toString(Liga.prosecanBrSkokova(t)));
-					i.setText(Double.toString(Liga.prosecanBrIzgubljenih(t)));
-					u.setText(Double.toString(Liga.prosecanBrOduzetih(t)));
-					b.setText(Double.toString(Liga.prosecanBrBlokada(t)));
-					f.setText(Double.toString(Liga.prosecanBrFaulova(t)));
-				
-					int val1  = Integer.parseInt(l11.getText()) *100 / Integer.parseInt(l1.getText());
-					progressBar_1.setValue(val1);
-					int val2  = Integer.parseInt(l22.getText()) *100 / Integer.parseInt(l2.getText());
-					progressBar_2.setValue(val2);
-					int val3  = Integer.parseInt(l33.getText()) *100 / Integer.parseInt(l3.getText());
-					progressBar.setValue(val3);
-			}
+					Tim  t = (Tim) comboBox.getSelectedItem();
+					l1.setText(GUIKontroler.stringUkupanZa1(t));
+					l11.setText(GUIKontroler.stringPogodjenZa1(t));
+					l2.setText(GUIKontroler.stringUkupanZa2(t));
+					l22.setText(GUIKontroler.stringPogodjenZa2(t));
+					l3.setText(GUIKontroler.stringUkupanZa3(t));
+					l33.setText(GUIKontroler.stringPogodjenZa3(t));
+					a.setText(GUIKontroler.stringProsecanBrAsis(t));
+					s.setText(GUIKontroler.stringProsecanBrSkok(t));
+					i.setText(GUIKontroler.stringProsecanBrIzgu(t));
+					u.setText(GUIKontroler.stringProsecanBrUkra(t));
+					b.setText(GUIKontroler.stringProsecanBrBlok(t));
+					f.setText(GUIKontroler.stringProsecanBrFaul(t));
+					GUIKontroler.podesi(l11.getText(),l1.getText(),progressBar_1,l22.getText(),l2.getText(),progressBar_2,l33.getText(),l3.getText(),progressBar);
+					
+					}
 		});
 		btn.setBounds(183, 25, 46, 42);
 		getContentPane().add(btn);
