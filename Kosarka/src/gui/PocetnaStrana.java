@@ -8,6 +8,9 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.Color;
 import javax.swing.SwingConstants;
+
+import klase.Liga;
+
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeEvent;
 import java.awt.FlowLayout;
@@ -34,44 +37,21 @@ public class PocetnaStrana extends JFrame{
 	private JButton btnNewButton_1;
 	private JButton btnNewButton_2;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					PocetnaStrana window = new PocetnaStrana();
-					window.frame.setVisible(true);
-					GUIKontroler.ucitajUListu();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
-	 */
-	public PocetnaStrana() {
-		initialize();
-	}
+	
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
-		frame = new JFrame();
-		frame.getContentPane().addPropertyChangeListener(new PropertyChangeListener() {
+	public PocetnaStrana() {
+		getContentPane().addPropertyChangeListener(new PropertyChangeListener() {
 			public void propertyChange(PropertyChangeEvent arg0) {
 			}
 		});
-		frame.setBounds(100, 100, 401, 315);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(new BorderLayout(0, 0));
-		frame.getContentPane().add(getPanel(), BorderLayout.NORTH);
-		frame.getContentPane().add(getPanel_1_1(), BorderLayout.CENTER);
+		setBounds(100, 100, 401, 315);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		getContentPane().setLayout(new BorderLayout(0, 0));
+		getContentPane().add(getPanel(), BorderLayout.NORTH);
+		getContentPane().add(getPanel_1_1(), BorderLayout.CENTER);
 	}
 	private JPanel getPanel() {
 		if (panel == null) {

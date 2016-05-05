@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import klase.Liga;
 import klase.Statistika;
 import klase.Tim;
 import klase.Utakmica;
@@ -172,8 +173,8 @@ public class StatGui extends JFrame {
 		
 		
 		JComboBox comboBox = new JComboBox();
-		for (int j = 0; j < GUIKontroler.getTimovi().size(); j++) {
-			comboBox.addItem(GUIKontroler.getTimovi().get(j));
+		for (int j = 0; j < Liga.getTimovi().size(); j++) {
+			comboBox.addItem(Liga.getTimovi().get(j));
 		}
 		comboBox.setBounds(159, -3, 90, 20);
 		getContentPane().add(comboBox);
@@ -182,18 +183,18 @@ public class StatGui extends JFrame {
 		btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Tim  t = (Tim) comboBox.getSelectedItem();
-				 l1.setText(Integer.toString(GUIKontroler.ukupanZa1(t)));
-					l11.setText(Integer.toString(GUIKontroler.pogodjenZa1(t)));
-					l2.setText(Integer.toString(GUIKontroler.ukupanZa2(t)));
-					l22.setText(Integer.toString(GUIKontroler.pogodjenZa2(t)));
-					l3.setText(Integer.toString(GUIKontroler.ukupanZa3(t)));
-					l33.setText(Integer.toString(GUIKontroler.pogodjenZa3(t)));
-					a.setText(Double.toString(GUIKontroler.prosecanBrAsistencija(t)));
-					s.setText(Double.toString(GUIKontroler.prosecanBrSkokova(t)));
-					i.setText(Double.toString(GUIKontroler.prosecanBrIzgubljenih(t)));
-					u.setText(Double.toString(GUIKontroler.prosecanBrOduzetih(t)));
-					b.setText(Double.toString(GUIKontroler.prosecanBrBlokada(t)));
-					f.setText(Double.toString(GUIKontroler.prosecanBrFaulova(t)));
+				 l1.setText(Integer.toString(Liga.ukupanZa1(t)));
+					l11.setText(Integer.toString(Liga.pogodjenZa1(t)));
+					l2.setText(Integer.toString(Liga.ukupanZa2(t)));
+					l22.setText(Integer.toString(Liga.pogodjenZa2(t)));
+					l3.setText(Integer.toString(Liga.ukupanZa3(t)));
+					l33.setText(Integer.toString(Liga.pogodjenZa3(t)));
+					a.setText(Double.toString(Liga.prosecanBrAsistencija(t)));
+					s.setText(Double.toString(Liga.prosecanBrSkokova(t)));
+					i.setText(Double.toString(Liga.prosecanBrIzgubljenih(t)));
+					u.setText(Double.toString(Liga.prosecanBrOduzetih(t)));
+					b.setText(Double.toString(Liga.prosecanBrBlokada(t)));
+					f.setText(Double.toString(Liga.prosecanBrFaulova(t)));
 				
 					int val1  = Integer.parseInt(l11.getText()) *100 / Integer.parseInt(l1.getText());
 					progressBar_1.setValue(val1);
