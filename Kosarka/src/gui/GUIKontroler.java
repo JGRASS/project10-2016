@@ -45,7 +45,6 @@ public class GUIKontroler {
 		
 	}
 	public static String stringUkupanZa2(Tim t) {
-		// TODO Auto-generated method stub
 		return Integer.toString(liga.ukupanZa2(t));
 	}
 	public static String stringPogodjenZa2(Tim t) {

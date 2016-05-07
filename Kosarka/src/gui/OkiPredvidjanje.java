@@ -1,7 +1,6 @@
 package gui;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -56,9 +55,9 @@ public class OkiPredvidjanje extends JFrame {
 	}
 	private JComboBox getComboBox() {
 		if (comboBox == null) {
-			comboBox = new JComboBox<Tim>();
+			comboBox = new JComboBox();
+			comboBox.setBounds(96, 58, 213, 20);
 			GUIKontroler.popuniComboBox(comboBox);
-			comboBox.setPreferredSize(new Dimension(130, 20));
 		}
 		return comboBox;
 	}
