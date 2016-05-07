@@ -181,20 +181,24 @@ public class StatGui extends JFrame {
 		JButton btn = new JButton("OK");
 		btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-					Tim  t = (Tim) comboBox.getSelectedItem();
-					l1.setText(GUIKontroler.stringUkupanZa1(t));
-					l11.setText(GUIKontroler.stringPogodjenZa1(t));
-					l2.setText(GUIKontroler.stringUkupanZa2(t));
-					l22.setText(GUIKontroler.stringPogodjenZa2(t));
-					l3.setText(GUIKontroler.stringUkupanZa3(t));
-					l33.setText(GUIKontroler.stringPogodjenZa3(t));
-					a.setText(GUIKontroler.stringProsecanBrAsis(t));
-					s.setText(GUIKontroler.stringProsecanBrSkok(t));
-					i.setText(GUIKontroler.stringProsecanBrIzgu(t));
-					u.setText(GUIKontroler.stringProsecanBrUkra(t));
-					b.setText(GUIKontroler.stringProsecanBrBlok(t));
-					f.setText(GUIKontroler.stringProsecanBrFaul(t));
-					GUIKontroler.podesi(l11.getText(),l1.getText(),progressBar_1,l22.getText(),l2.getText(),progressBar_2,l33.getText(),l3.getText(),progressBar);
+					try {
+						Tim  t = (Tim) comboBox.getSelectedItem();
+						l1.setText(GUIKontroler.stringUkupanZa1(t));
+						l11.setText(GUIKontroler.stringPogodjenZa1(t));
+						l2.setText(GUIKontroler.stringUkupanZa2(t));
+						l22.setText(GUIKontroler.stringPogodjenZa2(t));
+						l3.setText(GUIKontroler.stringUkupanZa3(t));
+						l33.setText(GUIKontroler.stringPogodjenZa3(t));
+						a.setText(GUIKontroler.stringProsecanBrAsis(t));
+						s.setText(GUIKontroler.stringProsecanBrSkok(t));
+						i.setText(GUIKontroler.stringProsecanBrIzgu(t));
+						u.setText(GUIKontroler.stringProsecanBrUkra(t));
+						b.setText(GUIKontroler.stringProsecanBrBlok(t));
+						f.setText(GUIKontroler.stringProsecanBrFaul(t));
+						GUIKontroler.podesi(l11.getText(),l1.getText(),progressBar_1,l22.getText(),l2.getText(),progressBar_2,l33.getText(),l3.getText(),progressBar);
+					} catch (RuntimeException e) {
+						GUIKontroler.prikaziDijalogGreskeNemaUtakmica();
+					}
 					
 					}
 		});

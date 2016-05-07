@@ -84,15 +84,6 @@ public class Liga{
 		return brojPrimljenih;
 	}
 	
-	public void main(String[] args) {
-		ucitajIzFajlaUListu();
-		System.out.println(timovi.get(0).getUtakmice().get(0));
-		System.out.println(timovi.get(0).getUtakmice().get(1));
-		System.out.println(timovi.get(0).getUtakmice().get(2));
-		
-		Tim philly = timovi.get(0);
-		System.out.println(vratiUkupanBrPostigunih(philly));
-	}
 	public int pozicijaTima(Tim t){
 		int pozicija = 0;
 		for(int i=1;i<timovi.size();i++){
@@ -156,6 +147,9 @@ public class Liga{
 		
 	}
 	public double prosecanBrSkokova(Tim t){
+		if(timovi.get(pozicijaTima(t)).getUtakmice().size() == 0)
+			throw new RuntimeException("Tim nema nijednu unetu utakmicu.");
+		
 		int ukupno = 0;
 		for (int i = 0; i < timovi.get(pozicijaTima(t)).getUtakmice().size(); i++) {
 			ukupno += timovi.get(pozicijaTima(t)).getUtakmice().get(i).getStatistika().getSkokovi();
@@ -164,6 +158,9 @@ public class Liga{
 	}
 	
 	public double prosecanBrAsistencija(Tim t){
+		if(timovi.get(pozicijaTima(t)).getUtakmice().size() == 0)
+			throw new RuntimeException("Tim nema nijednu unetu utakmicu.");
+		
 		int ukupno = 0;
 		for (int i = 0; i < timovi.get(pozicijaTima(t)).getUtakmice().size(); i++) {
 			ukupno += timovi.get(pozicijaTima(t)).getUtakmice().get(i).getStatistika().getAsistencije();
@@ -172,6 +169,9 @@ public class Liga{
 	}
 	
 	public double prosecanBrIzgubljenih(Tim t){
+		if(timovi.get(pozicijaTima(t)).getUtakmice().size() == 0)
+			throw new RuntimeException("Tim nema nijednu unetu utakmicu.");
+		
 		int ukupno = 0;
 		for (int i = 0; i < timovi.get(pozicijaTima(t)).getUtakmice().size(); i++) {
 			ukupno += timovi.get(pozicijaTima(t)).getUtakmice().get(i).getStatistika().getIzgubljeneLopte();
@@ -180,6 +180,9 @@ public class Liga{
 	}
 	
 	public double prosecanBrOduzetih(Tim t){
+		if(timovi.get(pozicijaTima(t)).getUtakmice().size() == 0)
+			throw new RuntimeException("Tim nema nijednu unetu utakmicu.");
+		
 		int ukupno = 0;
 		for (int i = 0; i < timovi.get(pozicijaTima(t)).getUtakmice().size(); i++) {
 			ukupno += timovi.get(pozicijaTima(t)).getUtakmice().get(i).getStatistika().getOduzeteLopte();
@@ -188,6 +191,9 @@ public class Liga{
 	}
 	
 	public double prosecanBrBlokada(Tim t){
+		if(timovi.get(pozicijaTima(t)).getUtakmice().size() == 0)
+			throw new RuntimeException("Tim nema nijednu unetu utakmicu.");
+		
 		int ukupno = 0;
 		for (int i = 0; i < timovi.get(pozicijaTima(t)).getUtakmice().size(); i++) {
 			ukupno += timovi.get(pozicijaTima(t)).getUtakmice().get(i).getStatistika().getNapravljenaBlokade();
@@ -196,6 +202,9 @@ public class Liga{
 	}
 	
 	public double prosecanBrFaulova(Tim t){
+		if(timovi.get(pozicijaTima(t)).getUtakmice().size() == 0)
+			throw new RuntimeException("Tim nema nijednu unetu utakmicu.");
+		
 		int ukupno = 0;
 		for (int i = 0; i < timovi.get(pozicijaTima(t)).getUtakmice().size(); i++) {
 			ukupno += timovi.get(pozicijaTima(t)).getUtakmice().get(i).getStatistika().getNacinjeniFaulovi();

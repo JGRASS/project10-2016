@@ -3,6 +3,7 @@ package gui;
 import java.awt.EventQueue;
 
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
 
@@ -14,6 +15,8 @@ public class GUIKontroler {
 	
 	private static PocetnaStrana glavniProzor;
 	private static DodavanjeNoveUtakmice utakmicaProzor;
+	private static StatGui stat;
+	private static OkiPredvidjanje predvidjaj;
 	private static Liga liga = new Liga();
 	
 	/**
@@ -148,7 +151,7 @@ public class GUIKontroler {
 	}
 	
 	public static void otvoriProzorStatistika() {
-		StatGui stat = new StatGui();
+		stat = new StatGui();
 		stat.setVisible(true);
 		stat.setLocationRelativeTo(null);
 	}
@@ -160,7 +163,7 @@ public class GUIKontroler {
 	}
 	
 	public static void otvoriProzorPredvidjanje() {
-		OkiPredvidjanje predvidjaj = new OkiPredvidjanje();
+		predvidjaj = new OkiPredvidjanje();
 		predvidjaj.setVisible(true);
 	}
 	
@@ -169,6 +172,8 @@ public class GUIKontroler {
 				"Zatvori prozor", JOptionPane.YES_NO_OPTION);
 	}
 	
-	
+	public static void prikaziDijalogGreskeNemaUtakmica() {
+		JOptionPane.showMessageDialog(stat, "Izabrani tim nema nijednu dodatu utakmicu.\nNovu utakmicu mozete dodati pomocu opcije u glavnom prozoru.","Greska",JOptionPane.ERROR_MESSAGE);
+	}
 
 }

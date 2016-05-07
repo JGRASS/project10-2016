@@ -121,6 +121,7 @@ public class Statistika implements Serializable{
 		this.napravljenaBlokade = napravljenaBlokade;
 		this.nacinjeniFaulovi = nacinjeniFaulovi;
 	}
+	
 	@Override
 	public String toString() {
 		return "Statistika [poeni=" + poeni + ", pogodjeniZaJedan=" + pogodjeniZaJedan + ", suteviZaJedan="
