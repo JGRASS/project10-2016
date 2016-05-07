@@ -23,6 +23,8 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Component;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.event.ActionEvent;
 
 public class PocetnaStrana extends JFrame{
@@ -43,6 +45,12 @@ public class PocetnaStrana extends JFrame{
 	 * Initialize the contents of the frame.
 	 */
 	public PocetnaStrana() {
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				GUIKontroler.ugasiAplikaciju();
+			}
+		});
 		getContentPane().addPropertyChangeListener(new PropertyChangeListener() {
 			public void propertyChange(PropertyChangeEvent arg0) {
 			}
@@ -98,9 +106,7 @@ public class PocetnaStrana extends JFrame{
 			btnNewButton = new JButton("STATISTIKA");
 			btnNewButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					StatGui stat = new StatGui();
-					stat.setVisible(true);
-					stat.setLocationRelativeTo(null);
+					GUIKontroler.otvoriProzorStatistika();
 				}
 			});
 		}
@@ -111,9 +117,7 @@ public class PocetnaStrana extends JFrame{
 			btnNewButton_1 = new JButton("DODAVANJE NOVE UTAKMICE");
 			btnNewButton_1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					DodavanjeNoveUtakmice utakmicaProzor = new DodavanjeNoveUtakmice();
-					utakmicaProzor.setVisible(true);
-					utakmicaProzor.setLocationRelativeTo(null);
+					GUIKontroler.otvoriProzorDodavanjeNoveUtakmice();
 				}
 			});
 		}
@@ -124,8 +128,7 @@ public class PocetnaStrana extends JFrame{
 			btnNewButton_2 = new JButton("PREDVIDJANJE");
 			btnNewButton_2.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					OkiPredvidjanje predvidjaj = new OkiPredvidjanje();
-					predvidjaj.setVisible(true);
+					GUIKontroler.otvoriProzorPredvidjanje();
 				}
 			});
 		}

@@ -18,81 +18,17 @@ import java.io.Serializable;
 
 public class Liga{
 	
-	private static List<Tim> timovi = new ArrayList<>();
+	private List<Tim> timovi = new ArrayList<>();
 	
-	public static List<Tim> getTimovi() {
+	public List<Tim> getTimovi() {
 		return timovi;
 	}
 
-	public static void setTimovi(List<Tim> timovi) {
-		Liga.timovi = timovi;
-	}
-	
-	public static void ucitajUListu(){
-		/*if(timovi.isEmpty()){
-			Tim Oklahoma = new Tim("Oklahoma City Thunder", "Chesapeake Energy Arena", new LinkedList<>());
-			Tim Portland = new Tim("Portland Trail Blazers", "Moda Center", new LinkedList<>());
-			Tim Utah = new Tim("Utah Jazz", "	Vivint Smart Home Arena", new LinkedList<>());
-			Tim Denver = new Tim("Denver Nuggets", "Pepsi Center", new LinkedList<>());
-			Tim Minnesota = new Tim("Minnesota Timberwolves", "Target Center", new LinkedList<>());
-			Tim GoldenState = new Tim("Golden State Warriors", "Oracle Arena", new LinkedList<>());
-			Tim LAClippers = new Tim("Los Angeles Clippers ", "Staples Center", new LinkedList<>());
-			Tim Sacramento = new Tim("Sacramento Kings", "Golden 1 Center", new LinkedList<>());
-			Tim Phoenix = new Tim("Phoenix Suns", "Talking Stick Resort Arena", new LinkedList<>());
-			Tim LALakers = new Tim("Los Angeles Lakers", "Staples Center", new LinkedList<>());
-			Tim SanAntonio = new Tim("San Antonio Spurs", "AT&T Center", new LinkedList<>());
-			Tim Dallas = new Tim("Dallas Mavericks", "American Airlines Center", new LinkedList<>());
-			Tim Memphis = new Tim("Memphis Grizzlies", "FedExForum", new LinkedList<>());
-			Tim Houston = new Tim("Houston Rockets", "Toyota Center", new LinkedList<>());
-			Tim NewOrleans = new Tim("New Orleans Pelicans", "Smoothie King Center", new LinkedList<>());
-			Tim Chicago = new Tim("Chicago Bulls","United centre",new LinkedList<>());
-			Tim Atlanta = new Tim("Atlanta Hawks","Philips arena",new LinkedList<>());
-			Tim Miami = new Tim("Miami Heat","American Airlines arena",new LinkedList<>());
-			Tim Cleveland = new Tim("Cleveland Cavaliers","Quicken Loans arena",new LinkedList<>());
-			Tim Indiana = new Tim("Indiana Pacers","Bankers life fieldhouse",new LinkedList<>());
-			Tim Toronto = new Tim("Toronto Raptors","Air Canada centre",new LinkedList<>());
-			Tim Boston = new Tim("Boston Celtics","TD Garden",new LinkedList<>());
-			Tim Charlotte = new Tim("Charlotte Hornets","Time Warner Cable Arena",new LinkedList<>());
-			Tim Washington = new Tim("Washington Wizards","Verizon center",new LinkedList<>());
-			Tim NewYork = new Tim("New York","Madison Square garden",new LinkedList<>());
-			Tim Brookyln = new Tim("Brooklyn Nets","Barclays Center",new LinkedList<>());
-			Tim Orlando = new Tim("Orlando Magic","Amway center", new LinkedList<>());
-			Tim Milwaukee = new Tim("Milwaukee bucks", "BMO Harris Bradley Center", new LinkedList<>());
-			Tim Philadelphia= new Tim("Philadelphia 76ers"," Wells Fargo Center", new LinkedList<>());
-			timovi.add(Philadelphia);
-			timovi.add(Milwaukee);
-			timovi.add(Orlando);
-			timovi.add(Brookyln);
-			timovi.add(NewYork);
-			timovi.add(Washington);
-			timovi.add(Charlotte);
-			timovi.add(Boston);
-			timovi.add(Toronto);
-			timovi.add(Indiana);
-			timovi.add(Cleveland);
-			timovi.add(Miami);
-			timovi.add(Atlanta);
-			timovi.add(Chicago);
-			timovi.add(NewOrleans);
-			timovi.add(Houston);
-			timovi.add(Memphis);
-			timovi.add(Dallas);
-			timovi.add(SanAntonio);
-			timovi.add(LALakers);
-			timovi.add(Phoenix);
-			timovi.add(Sacramento);
-			timovi.add(LAClippers);
-			timovi.add(GoldenState);
-			timovi.add(Minnesota);
-			timovi.add(Denver);
-			timovi.add(Utah);
-			timovi.add(Portland);
-			timovi.add(Oklahoma);
-		}*/
-		deserializeElement();
+	public void setTimovi(List<Tim> timovi) {
+		this.timovi = timovi;
 	}
 
-	public static void serializeElementPoElement(){
+	public void upisiUFajl(){
 		try {
 			ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("NBAtimovi.out")));
 			for (int i = 0; i < timovi.size(); i++) {
@@ -106,7 +42,7 @@ public class Liga{
 		}
 	}
 	
-	public static void deserializeElement(){
+	public void ucitajIzFajlaUListu(){
 		timovi.clear();
 		try {
 			ObjectInputStream in = new ObjectInputStream(new FileInputStream("NBAtimovi.out"));
@@ -122,7 +58,7 @@ public class Liga{
 		}
 	}
 	
-	public static int vratiUkupanBrPostigunih(Tim t){
+	public int vratiUkupanBrPostigunih(Tim t){
 		int brojPostignutih = 0;
 		for (int i = 0; i < timovi.size(); i++) {
 			if(timovi.get(i).equals(t)){
@@ -135,7 +71,7 @@ public class Liga{
 		return brojPostignutih;
 	}
 	
-	public static int vratiUkupanBrPrimljenih(Tim t){
+	public int vratiUkupanBrPrimljenih(Tim t){
 		int brojPrimljenih = 0;
 		for (int i = 0; i < timovi.size(); i++) {
 			if(timovi.get(i).equals(t)){
@@ -148,8 +84,8 @@ public class Liga{
 		return brojPrimljenih;
 	}
 	
-	public static void main(String[] args) {
-		deserializeElement();
+	public void main(String[] args) {
+		ucitajIzFajlaUListu();
 		System.out.println(timovi.get(0).getUtakmice().get(0));
 		System.out.println(timovi.get(0).getUtakmice().get(1));
 		System.out.println(timovi.get(0).getUtakmice().get(2));
@@ -157,7 +93,7 @@ public class Liga{
 		Tim philly = timovi.get(0);
 		System.out.println(vratiUkupanBrPostigunih(philly));
 	}
-	public static int pozicijaTima(Tim t){
+	public int pozicijaTima(Tim t){
 		int pozicija = 0;
 		for(int i=1;i<timovi.size();i++){
 			if(t.equals(timovi.get(i))) pozicija = i;
@@ -165,7 +101,7 @@ public class Liga{
 		}
 		return pozicija;
 	}
-	public static int ukupanZa1(Tim t){
+	public int ukupanZa1(Tim t){
 		int uk = 0;
 		for(int i=0;i<timovi.get(pozicijaTima(t)).getUtakmice().size();i++){
 			uk = uk + timovi.get(pozicijaTima(t)).getUtakmice().get(i).getStatistika().getSuteviZaJedan();
@@ -174,7 +110,7 @@ public class Liga{
 		return uk;
 		
 	}
-	public static int pogodjenZa1(Tim t){
+	public int pogodjenZa1(Tim t){
 		int uk = 0;
 		for(int i=0;i<timovi.get(pozicijaTima(t)).getUtakmice().size();i++){
 			uk = uk + timovi.get(pozicijaTima(t)).getUtakmice().get(i).getStatistika().getPogodjeniZaJedan();
@@ -183,7 +119,7 @@ public class Liga{
 		return uk ;
 		
 	}
-	public static int ukupanZa2(Tim t){
+	public int ukupanZa2(Tim t){
 		int uk = 0;
 		for(int i=0;i<timovi.get(pozicijaTima(t)).getUtakmice().size();i++){
 			uk = uk + timovi.get(pozicijaTima(t)).getUtakmice().get(i).getStatistika().getSuteviZaDva();
@@ -192,7 +128,7 @@ public class Liga{
 		return uk;
 		
 	}
-	public static int pogodjenZa2(Tim t){
+	public int pogodjenZa2(Tim t){
 		int uk = 0;
 		for(int i=0;i<timovi.get(pozicijaTima(t)).getUtakmice().size();i++){
 			uk = uk + timovi.get(pozicijaTima(t)).getUtakmice().get(i).getStatistika().getPogodjeniZaDva();
@@ -201,7 +137,7 @@ public class Liga{
 		return uk;
 		
 	}
-	public static int ukupanZa3(Tim t){
+	public int ukupanZa3(Tim t){
 		int uk = 0;
 		for(int i=0;i<timovi.get(pozicijaTima(t)).getUtakmice().size();i++){
 			uk = uk + timovi.get(pozicijaTima(t)).getUtakmice().get(i).getStatistika().getSuteviZaTri();
@@ -210,7 +146,7 @@ public class Liga{
 		return uk;
 		
 	}
-	public static int pogodjenZa3(Tim t){
+	public int pogodjenZa3(Tim t){
 		int uk = 0;
 		for(int i=0;i<timovi.get(pozicijaTima(t)).getUtakmice().size();i++){
 			uk = uk + timovi.get(pozicijaTima(t)).getUtakmice().get(i).getStatistika().getPogodjeniZaTri();
@@ -219,7 +155,7 @@ public class Liga{
 		return uk;
 		
 	}
-	public static double prosecanBrSkokova(Tim t){
+	public double prosecanBrSkokova(Tim t){
 		int ukupno = 0;
 		for (int i = 0; i < timovi.get(pozicijaTima(t)).getUtakmice().size(); i++) {
 			ukupno += timovi.get(pozicijaTima(t)).getUtakmice().get(i).getStatistika().getSkokovi();
@@ -227,7 +163,7 @@ public class Liga{
 		return (double)ukupno / timovi.get(pozicijaTima(t)).getUtakmice().size();
 	}
 	
-	public static double prosecanBrAsistencija(Tim t){
+	public double prosecanBrAsistencija(Tim t){
 		int ukupno = 0;
 		for (int i = 0; i < timovi.get(pozicijaTima(t)).getUtakmice().size(); i++) {
 			ukupno += timovi.get(pozicijaTima(t)).getUtakmice().get(i).getStatistika().getAsistencije();
@@ -235,7 +171,7 @@ public class Liga{
 		return (double)ukupno / timovi.get(pozicijaTima(t)).getUtakmice().size();
 	}
 	
-	public static double prosecanBrIzgubljenih(Tim t){
+	public double prosecanBrIzgubljenih(Tim t){
 		int ukupno = 0;
 		for (int i = 0; i < timovi.get(pozicijaTima(t)).getUtakmice().size(); i++) {
 			ukupno += timovi.get(pozicijaTima(t)).getUtakmice().get(i).getStatistika().getIzgubljeneLopte();
@@ -243,7 +179,7 @@ public class Liga{
 		return (double)ukupno / timovi.get(pozicijaTima(t)).getUtakmice().size();
 	}
 	
-	public static double prosecanBrOduzetih(Tim t){
+	public double prosecanBrOduzetih(Tim t){
 		int ukupno = 0;
 		for (int i = 0; i < timovi.get(pozicijaTima(t)).getUtakmice().size(); i++) {
 			ukupno += timovi.get(pozicijaTima(t)).getUtakmice().get(i).getStatistika().getOduzeteLopte();
@@ -251,7 +187,7 @@ public class Liga{
 		return (double)ukupno / timovi.get(pozicijaTima(t)).getUtakmice().size();
 	}
 	
-	public static double prosecanBrBlokada(Tim t){
+	public double prosecanBrBlokada(Tim t){
 		int ukupno = 0;
 		for (int i = 0; i < timovi.get(pozicijaTima(t)).getUtakmice().size(); i++) {
 			ukupno += timovi.get(pozicijaTima(t)).getUtakmice().get(i).getStatistika().getNapravljenaBlokade();
@@ -259,11 +195,31 @@ public class Liga{
 		return (double)ukupno / timovi.get(pozicijaTima(t)).getUtakmice().size();
 	}
 	
-	public static double prosecanBrFaulova(Tim t){
+	public double prosecanBrFaulova(Tim t){
 		int ukupno = 0;
 		for (int i = 0; i < timovi.get(pozicijaTima(t)).getUtakmice().size(); i++) {
 			ukupno += timovi.get(pozicijaTima(t)).getUtakmice().get(i).getStatistika().getNacinjeniFaulovi();
 		}
 		return (double)ukupno / timovi.get(pozicijaTima(t)).getUtakmice().size();
+	}
+
+	public void dodajUtakmicu(Tim dom, Tim gos, Statistika domStat, Statistika gosStat, int domBrPrimljenih,
+			int gosBrPrimljenih) {
+		for (int i = 0; i < timovi.size(); i++) {
+			Tim t = timovi.get(i);
+			if(dom.equals(t)){
+				if(t.getUtakmice().isEmpty())
+					t.getUtakmice().add(new Utakmica(0, gos.getIme(), domStat, domBrPrimljenih));
+				else
+					t.getUtakmice().add(new Utakmica(t.getUtakmice().size(), gos.getIme(), domStat, domBrPrimljenih));
+			}
+			if(gos.equals(t)){
+				if(t.getUtakmice().isEmpty())
+					t.getUtakmice().add(new Utakmica(0, dom.getIme(), gosStat, gosBrPrimljenih));
+				else
+					t.getUtakmice().add(new Utakmica(t.getUtakmice().size(), dom.getIme(), gosStat, gosBrPrimljenih));
+			}
+		}
+		
 	}
 }

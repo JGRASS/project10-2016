@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -55,11 +56,9 @@ public class OkiPredvidjanje extends JFrame {
 	}
 	private JComboBox getComboBox() {
 		if (comboBox == null) {
-			comboBox = new JComboBox();
-			comboBox.setBounds(96, 58, 213, 20);
-			for (int j = 0; j < Liga.getTimovi().size(); j++) {
-				comboBox.addItem(Liga.getTimovi().get(j));
-			}
+			comboBox = new JComboBox<Tim>();
+			GUIKontroler.popuniComboBox(comboBox);
+			comboBox.setPreferredSize(new Dimension(130, 20));
 		}
 		return comboBox;
 	}
@@ -75,32 +74,12 @@ public class OkiPredvidjanje extends JFrame {
 			btnIzaberi = new JButton("Izaberi");
 			btnIzaberi.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					Tim a = (Tim) comboBox.getSelectedItem();
-					for (int i = 0; i < Liga.getTimovi().size(); i++) {
-						Tim t = Liga.getTimovi().get(i);
-						
-						double ispis;
-						double gore;
-						double dole;
-						int postignuti;
-						int primljeni;
-						
-						if(a.equals(t)){
-							lblIzaberiteEkipuZa.setVisible(false);
-							btnIzaberi.setVisible(false);
-							textField.setVisible(true);
-							postignuti = Liga.vratiUkupanBrPostigunih(t);
-							primljeni = Liga.vratiUkupanBrPrimljenih(t);
-							
-							gore = Math.pow(postignuti, 13.91);
-							dole = Math.pow(primljeni, 13.91);
-							
-							ispis = gore / (gore + dole);
-							Double ispisi1 = (Double) ispis;
-							textField.setText( ispisi1.toString() + "%");
-							
-						}
-					}
+					Tim t = (Tim) comboBox.getSelectedItem();
+					lblIzaberiteEkipuZa.setVisible(false);
+					btnIzaberi.setVisible(false);
+					textField.setVisible(true);
+					double iznos = GUIKontroler.izracunajVerovatnocu(t);
+					textField.setText( String.valueOf(iznos) + "%");
 				}
 			});
 			btnIzaberi.setBounds(154, 179, 89, 23);

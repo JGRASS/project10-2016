@@ -173,7 +173,7 @@ public class StatGui extends JFrame {
 		
 		
 		JComboBox comboBox = new JComboBox();
-		GUIKontroler.popuni(comboBox);
+		GUIKontroler.popuniComboBox(comboBox);
 		
 		comboBox.setBounds(159, -3, 90, 20);
 		getContentPane().add(comboBox);

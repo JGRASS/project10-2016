@@ -9,6 +9,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import java.awt.Dimension;
@@ -97,12 +99,19 @@ public class DodavanjeNoveUtakmice extends JFrame {
 	private JLabel lblBrojSutevaZa_1;
 	private JSpinner spinnerBrSutevaZaTriDom;
 	private JSpinner spinnerBrSutevaZaTriGos;
-	private int index = 0;
 
 	/**
 	 * Create the frame.
 	 */
 	public DodavanjeNoveUtakmice() {
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent arg0) {
+				if(GUIKontroler.daLiSteSigurniDaZeliteDaOdustanete() == JOptionPane.YES_OPTION){
+					dispose();
+				}
+			}
+		});
 		setResizable(false);
 		setMinimumSize(new Dimension(600, 500));
 		setTitle("Dodavanje nove utakmice");
@@ -200,64 +209,29 @@ public class DodavanjeNoveUtakmice extends JFrame {
 			btnPotvrdiUnos = new JButton("Potvrdi unos");
 			btnPotvrdiUnos.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					int pogSlobodnaDom = (Integer) spinnerPogSlobodnaDom.getValue();
-					int pogSlobodnaGos = (Integer) spinnerPogSlobodnaGos.getValue();
-					int brSlobodnihDom = (Integer) spinnerBrSlobodnihDom.getValue();
-					int brSlobodnihGos = (Integer) spinnerBrSlobodnihGos.getValue();
-					int pogDvojkeDom = (Integer) spinnerPogDvojkeDom.getValue();
-					int pogDvojkeGos = (Integer) spinnerPogDvojkeGos.getValue();
-					int brSutevaZaDvaDom = (Integer) spinnerBrSutevaZaDvaDom.getValue();
-					int brSutevaZaDvaGos = (Integer) spinnerBrSutevaZaDvaGos.getValue();
-					int pogTrojkeDom = (Integer) spinnerPogTrojkeDom.getValue();
-					int pogTrojkeGos = (Integer) spinnerPogTrojkeGos.getValue();
-					int brSutevaZaTriDom = (Integer) spinnerBrSutevaZaTriDom.getValue();
-					int brSutevaZaTriGos = (Integer) spinnerBrSutevaZaTriGos.getValue();
-					int skokoviDom = (Integer) spinnerSkokoviDom.getValue();
-					int skokoviGos = (Integer) spinnerSkokoviGos.getValue();
-					int oduzeteLopteDom = (Integer) spinnerOduzeteDom.getValue();
-					int oduzeteLopteGos = (Integer) spinnerOduzeteGos.getValue();
-					int izgubljeneLopteDom = (Integer) spinnerIzgubljeneDom.getValue();
-					int izgubljeneLopteGos = (Integer) spinnerIzgubljeneGos.getValue();
-					int asistencijeDom = (Integer) spinnerAsistencijeDom.getValue();
-					int asistencijeGos = (Integer) spinnerAsistencijeDom.getValue();
-					int blokadeDom = (Integer) spinnerBlokadeDom.getValue();
-					int blokadeGos = (Integer) spinnerBlokadeGos.getValue();
-					int fauloviDom = (Integer) spinnerFauloviDom.getValue();
-					int fauloviGos = (Integer) spinnerFauloviGos.getValue();
+					GUIKontroler.dodajUtakmicu((Integer) spinnerPogSlobodnaDom.getValue(), 
+							(Integer) spinnerPogSlobodnaGos.getValue(), 
+							(Integer) spinnerBrSlobodnihDom.getValue(),(Integer) spinnerBrSlobodnihGos.getValue(), 
+							(Integer) spinnerPogDvojkeDom.getValue(), (Integer) spinnerPogDvojkeGos.getValue(), 
+							(Integer) spinnerBrSutevaZaDvaDom.getValue(),(Integer) spinnerBrSutevaZaDvaGos.getValue(),
+							(Integer) spinnerPogTrojkeDom.getValue(),(Integer) spinnerPogTrojkeGos.getValue(),
+							(Integer) spinnerBrSutevaZaTriDom.getValue(),(Integer) spinnerBrSutevaZaTriGos.getValue(),
+							(Integer) spinnerSkokoviDom.getValue(),(Integer) spinnerSkokoviGos.getValue(),
+							(Integer) spinnerOduzeteDom.getValue(),(Integer) spinnerOduzeteGos.getValue(),
+							(Integer) spinnerIzgubljeneDom.getValue(),(Integer) spinnerIzgubljeneGos.getValue(),
+							(Integer) spinnerAsistencijeDom.getValue(),(Integer) spinnerAsistencijeDom.getValue(),
+							(Integer) spinnerBlokadeDom.getValue(),(Integer) spinnerBlokadeGos.getValue(),
+							(Integer) spinnerFauloviDom.getValue(),(Integer) spinnerFauloviGos.getValue(),
+							(Tim) comboBoxDomaci.getSelectedItem(),(Tim) comboBoxGosti.getSelectedItem());
 					
-					Tim dom = (Tim) comboBoxDomaci.getSelectedItem();
-					Tim gos = (Tim) comboBoxGosti.getSelectedItem();
+			
 					
-					Statistika domStat = new Statistika(pogSlobodnaDom+2*pogDvojkeDom+3*pogTrojkeDom, 
-							pogSlobodnaDom, brSlobodnihDom, pogDvojkeDom, brSutevaZaDvaDom, pogTrojkeDom, brSutevaZaTriDom, 
-							skokoviDom, oduzeteLopteDom, izgubljeneLopteDom, asistencijeDom, blokadeDom, fauloviDom);
-					
-					Statistika gosStat = new Statistika(pogSlobodnaGos+2*pogDvojkeGos+3*pogTrojkeGos, 
-							pogSlobodnaGos, brSlobodnihGos, pogDvojkeGos, brSutevaZaDvaGos, pogTrojkeGos, brSutevaZaTriGos, 
-							skokoviGos, oduzeteLopteGos, izgubljeneLopteGos, asistencijeGos, blokadeGos, fauloviGos);
-					
-					int domBrPrimljenih = pogSlobodnaGos+2*pogDvojkeGos+3*pogTrojkeGos;
-					int gosBrPrimljenih = pogSlobodnaDom+2*pogDvojkeDom+3*pogTrojkeDom;
-					
-					for (int i = 0; i < Liga.getTimovi().size(); i++) {
-						Tim t = Liga.getTimovi().get(i);
-						if(dom.equals(t)){
-							if(t.getUtakmice().isEmpty())
-								t.getUtakmice().add(new Utakmica(0, gos.getIme(), domStat, domBrPrimljenih));
-							else
-								t.getUtakmice().add(new Utakmica(t.getUtakmice().size(), gos.getIme(), domStat, domBrPrimljenih));
-						}
-						if(gos.equals(t)){
-							if(t.getUtakmice().isEmpty())
-								t.getUtakmice().add(new Utakmica(0, dom.getIme(), gosStat, gosBrPrimljenih));
-							else
-								t.getUtakmice().add(new Utakmica(t.getUtakmice().size(), dom.getIme(), gosStat, gosBrPrimljenih));
-						}
-					}
-					
-					Liga.serializeElementPoElement();
+					GUIKontroler.upisiUDatoteku();
 					
 					dispose();
+					
+					GUIKontroler.prikaziInfoProzorZaUspesanUnosUtakmice((Tim) comboBoxDomaci.getSelectedItem(),
+							(Tim) comboBoxGosti.getSelectedItem());
 					
 				}
 			});
@@ -278,7 +252,9 @@ public class DodavanjeNoveUtakmice extends JFrame {
 			btnOdustani.setPreferredSize(new Dimension(118, 23));
 			btnOdustani.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					dispose();
+					if(GUIKontroler.daLiSteSigurniDaZeliteDaOdustanete() == JOptionPane.YES_OPTION){
+						dispose();
+					}
 				}
 			});
 		}
@@ -298,10 +274,8 @@ public class DodavanjeNoveUtakmice extends JFrame {
 	}
 	private JComboBox getComboBoxDomaci() {
 		if (comboBoxDomaci == null) {
-			comboBoxDomaci = new JComboBox();
-			for (int i = 0; i < Liga.getTimovi().size(); i++) {
-				comboBoxDomaci.addItem(Liga.getTimovi().get(i));
-			}
+			comboBoxDomaci = new JComboBox<Tim>();
+			GUIKontroler.popuniComboBox(comboBoxDomaci);
 			comboBoxDomaci.setPreferredSize(new Dimension(130, 20));
 		}
 		return comboBoxDomaci;
@@ -314,10 +288,8 @@ public class DodavanjeNoveUtakmice extends JFrame {
 	}
 	private JComboBox getComboBoxGosti() {
 		if (comboBoxGosti == null) {
-			comboBoxGosti = new JComboBox();
-			for (int i = 0; i < Liga.getTimovi().size(); i++) {
-				comboBoxGosti.addItem(Liga.getTimovi().get(i));
-			}
+			comboBoxGosti = new JComboBox<Tim>();
+			GUIKontroler.popuniComboBox(comboBoxGosti);
 			comboBoxGosti.setPreferredSize(new Dimension(130, 20));
 		}
 		return comboBoxGosti;
