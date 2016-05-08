@@ -8,9 +8,18 @@ import java.io.ObjectOutputStream;
 import java.util.List;
 
 import klase.Tim;
-
+/**
+ * 
+ * @author Luka Novakovic
+ * @author Luka Orlovic
+ * @author Ilija Pavlovic
+ * 
+ * */
 public class SOUpisiUFajl {
 
+	/** metoda koja serijalizuje podatke iz liste timova u fajl NBATimovi.out
+	 * @param timovi lista timova
+	 */
 	public static void izvrsi(List<Tim> timovi) {
 		try {
 			ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(
