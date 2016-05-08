@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -12,10 +13,14 @@ import klase.Tim;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
+import javax.swing.JProgressBar;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class OkiPredvidjanje extends JFrame {
 
@@ -25,6 +30,9 @@ public class OkiPredvidjanje extends JFrame {
 	private JLabel lblIzaberiteEkipuZa;
 	private JButton btnIzaberi;
 	private JTextField textField;
+	private JProgressBar progressBar;
+	private JLabel lblZaEkipu;
+	private JLabel lblProcenatPredvidjenih;
 
 	
 
@@ -32,8 +40,17 @@ public class OkiPredvidjanje extends JFrame {
 	 * Create the frame.
 	 */
 	public OkiPredvidjanje() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent arg0) {
+				if(GUIKontroler.daLiSteSigurniDaZeliteDaOdustanete() == JOptionPane.YES_OPTION){
+					dispose();
+				}
+			}
+		});
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		setBounds(100, 100, 446, 300);
+		setResizable(false);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -50,13 +67,16 @@ public class OkiPredvidjanje extends JFrame {
 			panel.add(getLblIzaberiteEkipuZa());
 			panel.add(getBtnIzaberi());
 			panel.add(getTextField());
+			panel.add(getProgressBar());
+			panel.add(getLblZaEkipu());
+			panel.add(getLblProcenatPredvidjenih());
 		}
 		return panel;
 	}
 	private JComboBox getComboBox() {
 		if (comboBox == null) {
 			comboBox = new JComboBox();
-			comboBox.setBounds(96, 58, 213, 20);
+			comboBox.setBounds(75, 58, 262, 20);
 			GUIKontroler.popuniComboBox(comboBox);
 		}
 		return comboBox;
@@ -64,7 +84,7 @@ public class OkiPredvidjanje extends JFrame {
 	private JLabel getLblIzaberiteEkipuZa() {
 		if (lblIzaberiteEkipuZa == null) {
 			lblIzaberiteEkipuZa = new JLabel("Izaberite ekipu za koju zelite da predvidite procenat pobeda");
-			lblIzaberiteEkipuZa.setBounds(54, 33, 294, 14);
+			lblIzaberiteEkipuZa.setBounds(51, 11, 335, 14);
 		}
 		return lblIzaberiteEkipuZa;
 	}
@@ -77,21 +97,49 @@ public class OkiPredvidjanje extends JFrame {
 					lblIzaberiteEkipuZa.setVisible(false);
 					btnIzaberi.setVisible(false);
 					textField.setVisible(true);
+					lblProcenatPredvidjenih.setVisible(true);
+					lblZaEkipu.setVisible(true);
 					double iznos = GUIKontroler.izracunajVerovatnocu(t);
+					GUIKontroler.izraziProgressBarUPredvidjanju(iznos, progressBar);
 					textField.setText( String.valueOf(iznos) + "%");
 				}
 			});
-			btnIzaberi.setBounds(154, 179, 89, 23);
+			btnIzaberi.setBounds(155, 196, 89, 23);
 		}
 		return btnIzaberi;
 	}
 	private JTextField getTextField() {
 		if (textField == null) {
 			textField = new JTextField();
-			textField.setBounds(96, 103, 213, 20);
+			textField.setBounds(95, 114, 213, 20);
 			textField.setColumns(10);
 			textField.setVisible(false);
 		}
 		return textField;
+	}
+	private JProgressBar getProgressBar() {
+		if (progressBar == null) {
+			progressBar = new JProgressBar();
+			progressBar.setToolTipText("Predvidjen procenat pobeda u sezoni");
+			progressBar.setForeground(Color.DARK_GRAY);
+			progressBar.setBounds(128, 154, 146, 14);
+		}
+		return progressBar;
+	}
+	private JLabel getLblZaEkipu() {
+		if (lblZaEkipu == null) {
+			lblZaEkipu = new JLabel("Za ekipu:");
+			lblZaEkipu.setBounds(173, 36, 71, 14);
+			lblZaEkipu.setVisible(false);
+		}
+		return lblZaEkipu;
+	}
+	private JLabel getLblProcenatPredvidjenih() {
+		if (lblProcenatPredvidjenih == null) {
+			lblProcenatPredvidjenih = new JLabel("procenat predvidjenih pobeda u sezoni je:");
+			lblProcenatPredvidjenih.setBounds(85, 89, 271, 14);
+			lblProcenatPredvidjenih.setVisible(false);
+		}
+		return lblProcenatPredvidjenih;
 	}
 }

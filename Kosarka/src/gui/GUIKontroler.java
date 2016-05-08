@@ -149,6 +149,10 @@ public class GUIKontroler {
 		}
 	}
 	
+	public static void izraziProgressBarUPredvidjanju(double iznos, JProgressBar progressBar){
+		progressBar.setValue((int) iznos);
+	}
+	
 	public static void otvoriProzorStatistika() {
 		stat = new StatGui();
 		stat.setVisible(true);
