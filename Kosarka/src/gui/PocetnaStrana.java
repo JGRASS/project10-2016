@@ -26,6 +26,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.ActionEvent;
+import java.awt.Toolkit;
 
 /**
  * 
@@ -51,6 +52,8 @@ public class PocetnaStrana extends JFrame{
 	 * Initialize the contents of the frame.
 	 */
 	public PocetnaStrana() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(PocetnaStrana.class.getResource("/ikona/Basketball.png")));
+		setTitle("KOSARKA APP");
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {

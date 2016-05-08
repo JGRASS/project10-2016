@@ -21,6 +21,7 @@ import javax.swing.JTextField;
 import javax.swing.JProgressBar;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.Toolkit;
 
 /**
  * 
@@ -46,6 +47,7 @@ public class OkiPredvidjanje extends JFrame {
 	 * Create the frame.
 	 */
 	public OkiPredvidjanje() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(OkiPredvidjanje.class.getResource("/ikona/Basketball.png")));
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent arg0) {
@@ -100,19 +102,25 @@ public class OkiPredvidjanje extends JFrame {
 	 * @return JButton
 	 */
 	private JButton getBtnIzaberi() {
+		
 		if (btnIzaberi == null) {
 			btnIzaberi = new JButton("Izaberi");
 			btnIzaberi.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					Tim t = (Tim) comboBox.getSelectedItem();
+					double iznos = GUIKontroler.izracunajVerovatnocu(t);
 					lblIzaberiteEkipuZa.setVisible(false);
 					//btnIzaberi.setVisible(false);
 					textField.setVisible(true);
 					lblProcenatPredvidjenih.setVisible(true);
 					lblZaEkipu.setVisible(true);
-					double iznos = GUIKontroler.izracunajVerovatnocu(t);
-					GUIKontroler.izraziProgressBarUPredvidjanju(iznos, progressBar);
-					textField.setText( String.valueOf(iznos) + "%");
+					if(iznos == 0){
+						textField.setText("Tim nema nijednu odigranu utakmicu.");
+					}
+					else{
+						GUIKontroler.izraziProgressBarUPredvidjanju(iznos, progressBar);
+						textField.setText( String.valueOf(iznos) + "%");
+					}
 				}
 			});
 			btnIzaberi.setBounds(155, 196, 89, 23);

@@ -43,6 +43,7 @@ import java.awt.CardLayout;
 import java.awt.Insets;
 import javax.swing.JSplitPane;
 import javax.swing.SpinnerNumberModel;
+import java.awt.Toolkit;
 
 /**
  * 
@@ -110,6 +111,7 @@ public class DodavanjeNoveUtakmice extends JFrame {
 	 * Create the frame.
 	 */
 	public DodavanjeNoveUtakmice() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(DodavanjeNoveUtakmice.class.getResource("/ikona/Basketball.png")));
 		addWindowListener(new WindowAdapter() {
 			@Override
 			/**

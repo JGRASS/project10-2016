@@ -202,7 +202,10 @@ public class GUIKontroler {
 		dole = Math.pow(primljeni, 13.91);
 
 		ispis = gore / (gore + dole);
-		return (Double) ispis;
+		if(gore == 0 || dole == 0){
+			return 0;
+		}
+		else return (Double) ispis;
 	}
 	
 	/** 

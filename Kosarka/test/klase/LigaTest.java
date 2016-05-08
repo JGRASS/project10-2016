@@ -138,6 +138,7 @@ public class LigaTest {
 
 	@Test (expected = java.lang.RuntimeException.class)
 	public void prosecanBrSkokovaNemaUtakmica(){
+		liga.setTimovi(null);
 		liga.prosecanBrSkokova(n);
 	}
 	
@@ -153,6 +154,7 @@ public class LigaTest {
 
 	@Test (expected = java.lang.RuntimeException.class)
 	public void prosecanBrAsistencijaNemaUtakmica(){
+		liga.setTimovi(null);
 		liga.prosecanBrAsistencija(n);
 	}
 	
@@ -168,6 +170,7 @@ public class LigaTest {
 
 	@Test (expected = java.lang.RuntimeException.class)
 	public void prosecanBrIzgubljenihNemaUtakmica(){
+		liga.setTimovi(null);
 		liga.prosecanBrIzgubljenih(n);
 	}
 	
@@ -183,6 +186,7 @@ public class LigaTest {
 
 	@Test (expected = java.lang.RuntimeException.class)
 	public void prosecanBrOduzetihNemaUtakmica(){
+		liga.setTimovi(null);
 		liga.prosecanBrOduzetih(n);
 	}
 	
@@ -198,6 +202,7 @@ public class LigaTest {
 
 	@Test (expected = java.lang.RuntimeException.class)
 	public void prosecanBrBlokadaNemaUtakmica(){
+		liga.setTimovi(null);
 		liga.prosecanBrBlokada(n);
 	}
 	
@@ -213,6 +218,7 @@ public class LigaTest {
 
 	@Test (expected = java.lang.RuntimeException.class)
 	public void prosecanBrFaulovaNemaUtakmica(){
+		liga.setTimovi(null);
 		liga.prosecanBrFaulova(n);
 	}
 	
