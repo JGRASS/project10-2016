@@ -2,6 +2,13 @@ package klase;
 
 import java.io.Serializable;
 
+/**
+ * Klasa koja predstavlja statisticke parametre jedne ekipe.
+ * @author Luka Novakovic
+ * @author Luka Orlovic
+ * @author Ilija Pavlovic
+ *
+ */
 public class Statistika implements Serializable{
 
 	private int poeni;
@@ -103,6 +110,23 @@ public class Statistika implements Serializable{
 	public void setNacinjeniFaulovi(int nacinjeniFaulovi) {
 		this.nacinjeniFaulovi = nacinjeniFaulovi;
 	}
+	/**
+	 * Funkcija koja vrednosti kosarkaskih parametra postavlja na upisane.
+	 * 
+	 * @param poeni
+	 * @param pogodjeniZaJedan
+	 * @param suteviZaJedan
+	 * @param pogodjeniZaDva
+	 * @param suteviZaDva
+	 * @param pogodjeniZaTri
+	 * @param suteviZaTri
+	 * @param skokovi
+	 * @param oduzeteLopte
+	 * @param izgubljeneLopte
+	 * @param asistencije
+	 * @param napravljenaBlokade
+	 * @param nacinjeniFaulovi
+	 */
 	public Statistika(int poeni, int pogodjeniZaJedan, int suteviZaJedan, int pogodjeniZaDva, int suteviZaDva,
 			int pogodjeniZaTri, int suteviZaTri, int skokovi, int oduzeteLopte, int izgubljeneLopte, int asistencije,
 			int napravljenaBlokade, int nacinjeniFaulovi) {

@@ -44,6 +44,12 @@ import java.awt.Insets;
 import javax.swing.JSplitPane;
 import javax.swing.SpinnerNumberModel;
 
+/**
+ * 
+ * @author Ilija Pavlovic
+ * 
+ * */
+
 public class DodavanjeNoveUtakmice extends JFrame {
 
 	private JPanel contentPane;
@@ -106,6 +112,10 @@ public class DodavanjeNoveUtakmice extends JFrame {
 	public DodavanjeNoveUtakmice() {
 		addWindowListener(new WindowAdapter() {
 			@Override
+			/**
+			 * Zatvaranje prozora ne zatvara celu aplikaciju.
+			 * @return void
+			 */
 			public void windowClosing(WindowEvent arg0) {
 				if(GUIKontroler.daLiSteSigurniDaZeliteDaOdustanete() == JOptionPane.YES_OPTION){
 					dispose();
@@ -204,6 +214,11 @@ public class DodavanjeNoveUtakmice extends JFrame {
 		}
 		return northPanel;
 	}
+	
+	/**
+	 * Unosenje funkcija koje bi trebalo da se obave naon pritiska na dugme "Potvrdi iznos" i sama velicina i oblik dugmeta.
+	 * @return JButton
+	 */
 	private JButton getBtnPotvrdiUnos() {
 		if (btnPotvrdiUnos == null) {
 			btnPotvrdiUnos = new JButton("Potvrdi unos");
@@ -243,6 +258,10 @@ public class DodavanjeNoveUtakmice extends JFrame {
 		}
 		return btnPotvrdiUnos;
 	}
+	/**
+	 * Unosenje funkcija koje bi trebalo da se obave naon pritiska na dugme "Potvrdi iznos" i sama velicina i oblik dugmeta.
+	 * @return JButton
+	 */
 	private JButton getBtnOdustani() {
 		if (btnOdustani == null) {
 			btnOdustani = new JButton("Odustani");
@@ -272,6 +291,10 @@ public class DodavanjeNoveUtakmice extends JFrame {
 		}
 		return lblDomacin;
 	}
+	/**
+	 * Definisanje Combo Box-a svih NBA ekipa i njegovo popunjavanje.
+	 * @return JComboBox
+	 */
 	private JComboBox getComboBoxDomaci() {
 		if (comboBoxDomaci == null) {
 			comboBoxDomaci = new JComboBox<Tim>();
@@ -286,6 +309,10 @@ public class DodavanjeNoveUtakmice extends JFrame {
 		}
 		return lblGost;
 	}
+	/**
+	 * Definisanje Combo Box-a svih NBA ekipa i njegovo popunjavanje.
+	 * @return JComboBox
+	 */
 	private JComboBox getComboBoxGosti() {
 		if (comboBoxGosti == null) {
 			comboBoxGosti = new JComboBox<Tim>();
@@ -294,6 +321,10 @@ public class DodavanjeNoveUtakmice extends JFrame {
 		}
 		return comboBoxGosti;
 	}
+	/**
+	 * Dugme za potvrdu izbora dveju razlicitih ekipa.
+	 * @return JButton
+	 */
 	private JButton getBtnPotvrdiIzbor() {
 		if (btnPotvrdiIzbor == null) {
 			btnPotvrdiIzbor = new JButton("Potvrdi izbor");
@@ -317,6 +348,10 @@ public class DodavanjeNoveUtakmice extends JFrame {
 		}
 		return btnPotvrdiIzbor;
 	}
+	/**
+	 * Obavestenej da unesene ekipe moraju biti razlicite.
+	 * @return JLabel
+	 */
 	private JLabel getLblEkipeMorajuBiti() {
 		if (lblEkipeMorajuBiti == null) {
 			lblEkipeMorajuBiti = new JLabel("Ekipe moraju biti razlicite!");

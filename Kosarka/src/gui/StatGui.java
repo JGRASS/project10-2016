@@ -29,6 +29,12 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+ * 
+ * @author Luka Novakovic
+ * 
+ * */
+
 public class StatGui extends JFrame {
 	private JTextField txtKosevi;
 
@@ -177,7 +183,9 @@ public class StatGui extends JFrame {
 		
 		comboBox.setBounds(159, -3, 90, 20);
 		getContentPane().add(comboBox);
-		
+		/**
+		 * Podesavanje dugmeta "OK", nakon cijeg se pritiska prikazuju svi bitni kosarkaski parametri izabrane ekipe.
+		 */
 		JButton btn = new JButton("OK");
 		btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -202,7 +210,7 @@ public class StatGui extends JFrame {
 					
 					}
 		});
-		btn.setBounds(183, 25, 46, 42);
+		btn.setBounds(169, 25, 60, 42);
 		getContentPane().add(btn);
 
 		

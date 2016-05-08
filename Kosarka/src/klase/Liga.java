@@ -22,7 +22,14 @@ import sistemske_operacije.SOUpisiUFajl;
 import sistemske_operacije.SOVratiUkupanBrPostignutih;
 import sistemske_operacije.SOVratiUkupanBrPrimljenih;
 
-
+/**
+ * Liga timova NBA lige i njene funkcije.
+ * 
+ * @author Luka Novakovic
+ * @author Luka Orlovic
+ * @author Ilija Pavlovic
+ *
+ */
 public class Liga{
 	
 	private List<Tim> timovi = new ArrayList<>();

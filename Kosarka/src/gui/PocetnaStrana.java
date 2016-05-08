@@ -27,6 +27,12 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.ActionEvent;
 
+/**
+ * 
+ * @author Luka Orlovic
+ * 
+ * */
+
 public class PocetnaStrana extends JFrame{
 
 	private JFrame frame;
@@ -101,6 +107,10 @@ public class PocetnaStrana extends JFrame{
 		}
 		return lblAplikacijuNapraviliLuka;
 	}
+	/**
+	 * Dugme za otvaranje prozora "Statistika".
+	 * @return JButton
+	 */
 	private JButton getBtnNewButton() {
 		if (btnNewButton == null) {
 			btnNewButton = new JButton("STATISTIKA");
@@ -112,6 +122,10 @@ public class PocetnaStrana extends JFrame{
 		}
 		return btnNewButton;
 	}
+	/**
+	 * Dugme za otvaranje prozora "Dodavanje nove utakmice".
+	 * @return JButton
+	 */
 	private JButton getBtnNewButton_1() {
 		if (btnNewButton_1 == null) {
 			btnNewButton_1 = new JButton("DODAVANJE NOVE UTAKMICE");
@@ -123,6 +137,10 @@ public class PocetnaStrana extends JFrame{
 		}
 		return btnNewButton_1;
 	}
+	/**
+	 * Dugme za otvaranje prozora "Predvidjanje".
+	 * @return jJButton
+	 */
 	private JButton getBtnNewButton_2() {
 		if (btnNewButton_2 == null) {
 			btnNewButton_2 = new JButton("PREDVIDJANJE");

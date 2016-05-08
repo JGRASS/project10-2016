@@ -2,6 +2,14 @@ package klase;
 
 import java.io.Serializable;
 
+/**
+ * Klasa svih pojedinacnih utakmica koje se odigraju u NBA ligi.
+ * 
+ * @author Luka Novakovic
+ * @author Luka Orlovic
+ * @author Ilija Pavlovic
+ *
+ */
 public class Utakmica implements Serializable{
 
 	private int ID;

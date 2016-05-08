@@ -3,6 +3,14 @@ package klase;
 import java.io.Serializable;
 import java.util.LinkedList;
 
+/**
+ * Klasa svakog pojedinacnog tima NBA lige.
+ * 
+ * @author Luka Novakovic
+ * @author Luka Orlovic
+ * @author Ilija Pavlovic
+ *
+ */
 public class Tim implements Serializable{
 
 	private String Ime;

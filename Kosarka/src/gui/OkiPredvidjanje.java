@@ -22,6 +22,12 @@ import javax.swing.JProgressBar;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+/**
+ * 
+ * @author Luka Orlovic
+ * 
+ * */
+
 public class OkiPredvidjanje extends JFrame {
 
 	private JPanel contentPane;
@@ -88,6 +94,11 @@ public class OkiPredvidjanje extends JFrame {
 		}
 		return lblIzaberiteEkipuZa;
 	}
+	
+	/**
+	 * Unosenje funkcija koje bi trebalo da se obave naon pritiska na dugme "Izaber" i sama velicina i oblik dugmeta.
+	 * @return JButton
+	 */
 	private JButton getBtnIzaberi() {
 		if (btnIzaberi == null) {
 			btnIzaberi = new JButton("Izaberi");
@@ -95,7 +106,7 @@ public class OkiPredvidjanje extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 					Tim t = (Tim) comboBox.getSelectedItem();
 					lblIzaberiteEkipuZa.setVisible(false);
-					btnIzaberi.setVisible(false);
+					//btnIzaberi.setVisible(false);
 					textField.setVisible(true);
 					lblProcenatPredvidjenih.setVisible(true);
 					lblZaEkipu.setVisible(true);
